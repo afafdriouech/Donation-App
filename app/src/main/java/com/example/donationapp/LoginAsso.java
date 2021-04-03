@@ -69,7 +69,7 @@ public class LoginAsso extends AppCompatActivity {
                         }
                         else{
                             Toast.makeText(LoginAsso.this, "Error "+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                            //progressBar.setVisibility(View.INVISIBLE);
+                             progressBar.setVisibility(View.GONE);
                         }
                     }
                 });

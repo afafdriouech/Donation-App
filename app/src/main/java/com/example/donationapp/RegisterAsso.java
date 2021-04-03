@@ -86,6 +86,8 @@ public class RegisterAsso extends AppCompatActivity {
                         }
                         else{
                             Toast.makeText(RegisterAsso.this, "Error "+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
+
                         }
                     }
                     });
