@@ -76,12 +76,15 @@
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="12dp"
         android:text="Sign up"
         app:backgroundTint="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PhoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/PhoneNumber"
+        app:layout_constraintVertical_bias="0.666" />
 
     <EditText
         android:id="@+id/editTxtPassword"
@@ -117,7 +120,8 @@
         android:id="@+id/signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="68dp"
         android:text="Have already an account?login here"
         android:textColor="@color/teal_700"
         android:textColorHint="#2D2F31"
@@ -136,10 +140,9 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signin"
-        app:layout_constraintVertical_bias="0.903" />
+        app:layout_constraintVertical_bias="0.304" />
 
     <EditText
         android:id="@+id/Date"
@@ -165,10 +168,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Date"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintVertical_bias="0.416" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
