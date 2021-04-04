@@ -38,7 +38,7 @@ public class RegisterAsso extends AppCompatActivity {
         mFullName   = findViewById(R.id.editTxtName);
         mEmail      = findViewById(R.id.editTxtEmail);
         mPassword   = findViewById(R.id.editTxtPassword);
-        mCity       =findViewById(R.id.editTxtCity);
+        mCity       =findViewById(R.id.editTxtAdr);
         mPhone      = findViewById(R.id.PhoneNumber);
         mRegisterBtn= findViewById(R.id.btnRegister);
         mLoginBtn   = findViewById(R.id.signin);
