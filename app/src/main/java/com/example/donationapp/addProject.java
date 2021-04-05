@@ -2,6 +2,7 @@ package com.example.donationapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.View;
@@ -46,7 +47,7 @@ public class addProject extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_project);
-        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout= findViewById(R.id.drawer_layout);
 
 
         fAuth = FirebaseAuth.getInstance();

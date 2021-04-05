@@ -21,7 +21,7 @@ public class Liste_appeldon extends AppCompatActivity {
     }
 
     public void ClickHome(View view){
-        MenuNavigationActivity.redirectActivity(this,TestMenuActivity.class);
+        MenuNavigationActivity.redirectActivity(this,addProject.class);
     }
     public void ClickProjet(View view){
         MenuNavigationActivity.redirectActivity(this,liste_projets.class);
@@ -31,7 +31,7 @@ public class Liste_appeldon extends AppCompatActivity {
         MenuNavigationActivity.redirectActivity(this,Liste_appeldon.class);
     }
     public void ClickDonCalled(View view){
-        MenuNavigationActivity.redirectActivity(this,TestMenuActivity.class);
+        MenuNavigationActivity.redirectActivity(this,addProject.class);
     }
     public void ClickDonators(View view){
         MenuNavigationActivity.redirectActivity(this,Liste_donateurs.class);
