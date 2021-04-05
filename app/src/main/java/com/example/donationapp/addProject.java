@@ -2,6 +2,10 @@ package com.example.donationapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import android.os.Bundle;
+import android.view.View;
+
 import com.example.donationapp.models.Projet;
 
 import android.content.Intent;
@@ -30,8 +34,10 @@ import java.util.Map;
 
 public class addProject extends AppCompatActivity {
 
-    EditText mTitre,mDateLancement,mDureeRealisation,mDateEcheance,mBudget,mlieu,mAvancement,mDescription,mImage;
-    Button mAddBtn;
+    DrawerLayout drawerLayout;
+
+    EditText mTitre,mDateLancement,mDureeRealisation,mDateEcheance,mBudget,mlieu,mAvancement,mDescription;
+    Button mAddBtn,mImage;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String assoID;
@@ -40,6 +46,8 @@ public class addProject extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_project);
+        drawerLayout = findViewById(R.id.drawer_layout);
+
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -50,7 +58,6 @@ public class addProject extends AppCompatActivity {
         mDateEcheance   =   findViewById(R.id.dateEcheance);
         mBudget = findViewById(R.id.budget);
         mlieu = findViewById(R.id.lieu);
-        mAvancement = findViewById(R.id.avancement);
         mDescription = findViewById(R.id.description);
         mImage = findViewById(R.id.image);
         mAddBtn = findViewById(R.id.btnAddProj);
@@ -70,7 +77,7 @@ public class addProject extends AppCompatActivity {
                 final String dateEcheance = mDateEcheance.getText().toString();
                 final String budget = mBudget.getText().toString();
                 final String lieu = mlieu.getText().toString();
-                final String avancement = mAvancement.getText().toString();
+                //final String avancement = mAvancement.getText().toString();
                 final String description = mDescription.getText().toString();
                 final String image = mImage.getText().toString();
 
@@ -109,5 +116,15 @@ public class addProject extends AppCompatActivity {
             }
         }
         );
+    }
+
+    public void ClickMenu(View view){
+        MenuNavigationActivity.openDrawer(drawerLayout);
+    }
+    public void ClickHome(View view){
+        MenuNavigationActivity.redirectActivity(this,TestMenuActivity.class);
+    }
+    public void ClickProjet(View view){
+        MenuNavigationActivity.redirectActivity(this,liste_projets.class);
     }
 }

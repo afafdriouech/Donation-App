@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Projet extends AppCompatActivity {
 
+
     private String titre;
     private String DateLancement;
     private String DureeRealisation;
