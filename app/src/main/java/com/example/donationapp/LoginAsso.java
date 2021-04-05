@@ -65,7 +65,7 @@ public class LoginAsso extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(LoginAsso.this, "signed in successfully",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),addProject.class));
+                            startActivity(new Intent(getApplicationContext(),liste_projets.class));
                         }
                         else{
                             Toast.makeText(LoginAsso.this, "Error "+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
