@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DonationApp">
-        <activity android:name=".RegisterDonater"></activity>
+        <activity android:name=".addProject"></activity>
+        <activity android:name=".RegisterDonater" />
         <activity android:name=".LoginAsso" />
         <activity android:name=".RegisterAsso">
             <intent-filter>
