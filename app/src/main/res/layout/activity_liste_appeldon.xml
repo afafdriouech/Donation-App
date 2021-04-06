@@ -17,18 +17,33 @@
             android:orientation="vertical">
             <include layout="@layout/main_toolbar"/>
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="33dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="16dp"
-                android:text="Liste of Donations Call"
-                android:textColor="#25221E"
-                android:textSize="24dp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="46dp"
-                tools:layout_editor_absoluteY="55dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Liste of donation calls"
+                    android:textColor="#25221E"
+                    android:textSize="30dp"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="46dp"
+                    tools:layout_editor_absoluteY="55dp" />
+                <ImageButton
+                    android:id="@+id/add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="60dp"
+                    app:srcCompat="@drawable/addicon" />
+            </LinearLayout>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,43 +68,44 @@
                             android:layout_height="wrap_content"
                             android:text="Help Youth"
                             android:textColor="#460500"
-                            android:textSize="20dp"/>
+                            android:textSize="30dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date de lancement:4/3/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date d'écheance:4/2/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Budget:30000"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Description here"
                             android:textColor="#393836"
-                            android:textSize="11dp"/>
+                            android:textSize="14dp"/>
 
                     </LinearLayout>
                     <ImageView
 
-                        android:layout_width="110dp"
+                        android:layout_width="140dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="7dp"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/appeldon" />
                     <LinearLayout
-
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -135,43 +151,44 @@
                             android:layout_height="wrap_content"
                             android:text="Help Youth"
                             android:textColor="#460500"
-                            android:textSize="20dp"/>
+                            android:textSize="30dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date de lancement:4/3/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date d'écheance:4/2/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Budget:30000"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Description here"
                             android:textColor="#393836"
-                            android:textSize="11dp"/>
+                            android:textSize="14dp"/>
 
                     </LinearLayout>
                     <ImageView
 
-                        android:layout_width="110dp"
+                        android:layout_width="140dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="7dp"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/appeldon" />
                     <LinearLayout
-
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -217,43 +234,44 @@
                             android:layout_height="wrap_content"
                             android:text="Help Youth"
                             android:textColor="#460500"
-                            android:textSize="20dp"/>
+                            android:textSize="30dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date de lancement:4/3/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date d'écheance:4/2/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Budget:30000"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Description here"
                             android:textColor="#393836"
-                            android:textSize="11dp"/>
+                            android:textSize="14dp"/>
 
                     </LinearLayout>
                     <ImageView
 
-                        android:layout_width="110dp"
+                        android:layout_width="140dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="7dp"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/appeldon" />
                     <LinearLayout
-
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -299,43 +317,44 @@
                             android:layout_height="wrap_content"
                             android:text="Help Youth"
                             android:textColor="#460500"
-                            android:textSize="20dp"/>
+                            android:textSize="30dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date de lancement:4/3/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date d'écheance:4/2/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Budget:30000"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Description here"
                             android:textColor="#393836"
-                            android:textSize="11dp"/>
+                            android:textSize="14dp"/>
 
                     </LinearLayout>
                     <ImageView
 
-                        android:layout_width="110dp"
+                        android:layout_width="140dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="7dp"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/appeldon" />
                     <LinearLayout
-
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -381,43 +400,44 @@
                             android:layout_height="wrap_content"
                             android:text="Help Youth"
                             android:textColor="#460500"
-                            android:textSize="20dp"/>
+                            android:textSize="30dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date de lancement:4/3/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date d'écheance:4/2/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Budget:30000"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Description here"
                             android:textColor="#393836"
-                            android:textSize="11dp"/>
+                            android:textSize="14dp"/>
 
                     </LinearLayout>
                     <ImageView
 
-                        android:layout_width="110dp"
+                        android:layout_width="140dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="7dp"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/appeldon" />
                     <LinearLayout
-
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -463,43 +483,44 @@
                             android:layout_height="wrap_content"
                             android:text="Help Youth"
                             android:textColor="#460500"
-                            android:textSize="20dp"/>
+                            android:textSize="30dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date de lancement:4/3/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date d'écheance:4/2/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Budget:30000"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Description here"
                             android:textColor="#393836"
-                            android:textSize="11dp"/>
+                            android:textSize="14dp"/>
 
                     </LinearLayout>
                     <ImageView
 
-                        android:layout_width="110dp"
+                        android:layout_width="140dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="7dp"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/appeldon" />
                     <LinearLayout
-
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -545,43 +566,44 @@
                             android:layout_height="wrap_content"
                             android:text="Help Youth"
                             android:textColor="#460500"
-                            android:textSize="20dp"/>
+                            android:textSize="30dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date de lancement:4/3/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date d'écheance:4/2/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Budget:30000"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Description here"
                             android:textColor="#393836"
-                            android:textSize="11dp"/>
+                            android:textSize="14dp"/>
 
                     </LinearLayout>
                     <ImageView
 
-                        android:layout_width="110dp"
+                        android:layout_width="140dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="7dp"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/appeldon" />
                     <LinearLayout
-
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -627,43 +649,44 @@
                             android:layout_height="wrap_content"
                             android:text="Help Youth"
                             android:textColor="#460500"
-                            android:textSize="20dp"/>
+                            android:textSize="30dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date de lancement:4/3/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Date d'écheance:4/2/2021"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Budget:30000"
                             android:textColor="#393836"
-                            android:textSize="12dp"/>
+                            android:textSize="14dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Description here"
                             android:textColor="#393836"
-                            android:textSize="11dp"/>
+                            android:textSize="14dp"/>
 
                     </LinearLayout>
                     <ImageView
 
-                        android:layout_width="110dp"
+                        android:layout_width="140dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="7dp"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/appeldon" />
                     <LinearLayout
-
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -685,88 +708,7 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginLeft="12dp"
-                tools:ignore="MissingConstraints">
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:padding="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Help Youth"
-                            android:textColor="#460500"
-                            android:textSize="20dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Date de lancement:4/3/2021"
-                            android:textColor="#393836"
-                            android:textSize="12dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Date d'écheance:4/2/2021"
-                            android:textColor="#393836"
-                            android:textSize="12dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Budget:30000"
-                            android:textColor="#393836"
-                            android:textSize="12dp"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Description here"
-                            android:textColor="#393836"
-                            android:textSize="11dp"/>
-
-                    </LinearLayout>
-                    <ImageView
-
-                        android:layout_width="110dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="7dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/appeldon" />
-                    <LinearLayout
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-                        <ImageButton
-                            android:background="@null"
-                            android:layout_marginTop="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_baseline_delete_24" />
-                        <ImageButton
-                            android:background="@null"
-                            android:layout_marginTop="20dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_edit" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
 
 
 
