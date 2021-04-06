@@ -110,7 +110,7 @@ public class addProject extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d("TAG", "onSuccess: projet created for association"+assoID);
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(),liste_projets.class));
                     }
                 });
 

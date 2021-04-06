@@ -15,34 +15,38 @@
             android:orientation="vertical">
         <include layout="@layout/main_toolbar"/>
 
-        <EditText
-            android:id="@+id/titre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="titre"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.144" />
+                <EditText
+                    android:id="@+id/titre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:layout_gravity="center"
+                    android:hint="titre"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="textPersonName"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.502"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.144" />
 
-        <EditText
-            android:id="@+id/budget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:ems="10"
-            android:hint="budget"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateEcheance"
-            app:layout_constraintVertical_bias="0.0" />
+                <EditText
+                    android:id="@+id/budget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="budget"
+                    android:inputType="textPersonName"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.502"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dateEcheance"
+                    app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/lieu"
@@ -51,6 +55,8 @@
             android:ems="10"
             android:hint="lieu"
             android:inputType="textPersonName"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -58,28 +64,17 @@
             app:layout_constraintTop_toBottomOf="@+id/budget"
             app:layout_constraintVertical_bias="0.063" />
 
-        <EditText
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="232dp"
-            android:ems="10"
-            android:hint="description"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <EditText
-            android:id="@+id/dateLancement"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="date lancement"
-            android:inputType="date"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+                <EditText
+                    android:id="@+id/dateLancement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="date lancement"
+                    android:inputType="date"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -90,8 +85,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="dateEcheance"
+            android:hint="date echeance"
             android:inputType="date"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
@@ -106,6 +103,8 @@
             android:ems="10"
             android:hint="duree de realisation"
             android:inputType="textPersonName"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
@@ -113,12 +112,29 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.307" />
 
+                <EditText
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:ems="10"
+                    android:hint="description"
+                    android:inputType="textPersonName"
+                    android:gravity="top"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.502"
+                    app:layout_constraintStart_toStartOf="parent" />
+
                 <Button
                     android:id="@+id/image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Add attachement"
                     app:backgroundTint="#B8BFBF"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="50dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
@@ -126,19 +142,20 @@
                     app:layout_constraintTop_toBottomOf="@+id/description"
                     app:layout_constraintVertical_bias="0.211" />
 
-        <Button
-            android:id="@+id/btnAddProj"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="420dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center_horizontal|center"
-            android:text="Ajouter"
-            android:textSize="22sp"
-            app:backgroundTint="@color/teal_700"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.56"
-            app:layout_constraintStart_toStartOf="parent" />
+                <Button
+                    android:id="@+id/btnAddProj"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:text="Ajouter"
+                    android:textSize="22sp"
+                    app:backgroundTint="@color/teal_700"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.56"
+                    app:layout_constraintStart_toStartOf="parent" />
         </LinearLayout>
 
         <RelativeLayout
