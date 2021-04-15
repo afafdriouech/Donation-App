@@ -8,10 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.donationapp.Favorites;
-import com.example.donationapp.Liste_associations;
 import com.example.donationapp.R;
-import com.example.donationapp.Recommendations;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
