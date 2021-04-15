@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.donationapp.Favorites;
+import com.example.donationapp.Liste_associtions;
 import com.example.donationapp.R;
+import com.example.donationapp.Recommendations;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -30,7 +33,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         Fragment  fragment = null;
         switch(position){
             case 0:
-                fragment = new Liste_associations();
+                fragment = new Liste_associtions();
                 break;
             case 1:
                 fragment = new Favorites();
