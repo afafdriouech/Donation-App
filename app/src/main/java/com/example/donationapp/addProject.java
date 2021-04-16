@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.content.ContentResolver;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -14,6 +17,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -22,6 +26,7 @@ import android.widget.Toast;
 
 import com.example.donationapp.models.Projet;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -29,6 +34,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,17 +49,25 @@ public class addProject extends AppCompatActivity {
     Button mAddBtn,mImage;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
+    StorageReference storageReference;
     String assoID;
+    //attachement
+    private static final int PICKFILE_RESULT_CODE = 1;
+    TextView uploadTxt;
+    Uri ImageUri;
+    StorageReference sr;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_project);
-        drawerLayout= findViewById(R.id.drawer_layout);
-
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+        /////////////
+        storageReference = FirebaseStorage.getInstance().getReference("projets");
 
         mTitre   = findViewById(R.id.titre);
         mDateLancement = findViewById(R.id.dateLancement);
@@ -62,6 +78,16 @@ public class addProject extends AppCompatActivity {
         mDescription = findViewById(R.id.description);
         mImage = findViewById(R.id.image);
         mAddBtn = findViewById(R.id.btnAddProj);
+        uploadTxt = findViewById(R.id.successOnUpload);
+        drawerLayout= findViewById(R.id.drawer_layout);
+
+        //add attachement listener
+        mImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFileChooser();
+            }
+        });
 
         //handle the already connected user
         if(fAuth.getCurrentUser() == null){
@@ -69,6 +95,7 @@ public class addProject extends AppCompatActivity {
             finish();
         }
 
+        // submit button listener
         mAddBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,20 +107,10 @@ public class addProject extends AppCompatActivity {
                 final String lieu = mlieu.getText().toString();
                 //final String avancement = mAvancement.getText().toString();
                 final String description = mDescription.getText().toString();
-                final String image = mImage.getText().toString();
 
                 //registration in firebase
                 assoID = fAuth.getCurrentUser().getUid();
-                /*Projet projet = new Projet(titre,dateLancement,dureeRealisation,dateEcheance,budget,lieu,avancement,description,image,assoID);
-                CollectionReference collectionReference=fStore.collection("projets");
-                collectionReference.add(projet).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d("TAG", "onSuccess: projet created for association"+assoID);
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                    }
-                });*/
-
+                //Projet projet = new Projet(titre,dateLancement,dureeRealisation,dateEcheance,budget,lieu,avancement,description,image,assoID);
                 Map<String,Object> proj = new HashMap<>();
                 proj.put("titre",titre);
                 proj.put("description",description);
@@ -104,7 +121,19 @@ public class addProject extends AppCompatActivity {
                 proj.put("avancement",null);
                 proj.put("budget",budget);
                 proj.put("lieu",lieu);
-                proj.put("image",image);
+                String imgName=System.currentTimeMillis()+"."+getFileExtension(ImageUri);
+                proj.put("imageName",imgName);
+                // STORE IMAGE IN FIREBASE
+                sr=storageReference.child(imgName);
+                sr.putFile(ImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(addProject.this,"upload successful",Toast.LENGTH_LONG ).show();
+
+                    }
+                });
+
+                proj.put("imageURL",sr.getDownloadUrl().toString());
                 CollectionReference collectionReference=fStore.collection("projets");
                 collectionReference.add(proj).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -112,8 +141,26 @@ public class addProject extends AppCompatActivity {
                         Log.d("TAG", "onSuccess: projet created for association"+assoID);
                         startActivity(new Intent(getApplicationContext(),liste_projets.class));
                     }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("TAG", "Failed to create project");
+                    }
                 });
 
+                /*CollectionReference collectionReference=fStore.collection("projets");
+                collectionReference.add(proj).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("TAG", "onSuccess: projet created for association"+assoID);
+                        startActivity(new Intent(getApplicationContext(),liste_projets.class));
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("TAG", "Failed to create project");
+                    }
+                });*/
             }
         }
         );
@@ -127,5 +174,29 @@ public class addProject extends AppCompatActivity {
     }
     public void ClickProjet(View view){
         MenuNavigationActivity.redirectActivity(this,liste_projets.class);
+    }
+
+    private void openFileChooser(){
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent,PICKFILE_RESULT_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICKFILE_RESULT_CODE && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            ImageUri = data.getData();
+            //textFile.setText(FilePath);
+            uploadTxt.setVisibility(View.VISIBLE);
+            System.out.println(ImageUri);
+        }
+    }
+    private String getFileExtension(Uri uri){
+        ContentResolver cr = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cr.getType(uri));
     }
 }

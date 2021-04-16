@@ -112,7 +112,7 @@ public class RegisterAsso extends AppCompatActivity {
                                 }
                             });
 
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(),liste_projets.class));
                         }
                         else{
                             Toast.makeText(RegisterAsso.this, "Error "+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
