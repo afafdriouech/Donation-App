@@ -36,6 +36,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
@@ -49,6 +50,7 @@ public class addProject extends AppCompatActivity {
     Button mAddBtn,mImage;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
+
     StorageReference storageReference;
     String assoID;
     //attachement
@@ -56,6 +58,7 @@ public class addProject extends AppCompatActivity {
     TextView uploadTxt;
     Uri ImageUri;
     StorageReference sr;
+    //StorageTask mUploadTask;
 
 
 
@@ -66,7 +69,6 @@ public class addProject extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        /////////////
         storageReference = FirebaseStorage.getInstance().getReference("projets");
 
         mTitre   = findViewById(R.id.titre);
@@ -105,25 +107,12 @@ public class addProject extends AppCompatActivity {
                 final String dateEcheance = mDateEcheance.getText().toString();
                 final String budget = mBudget.getText().toString();
                 final String lieu = mlieu.getText().toString();
-                //final String avancement = mAvancement.getText().toString();
                 final String description = mDescription.getText().toString();
+                //final String avancement = mAvancement.getText().toString();
+                final String avancement = null;
 
-                //registration in firebase
-                assoID = fAuth.getCurrentUser().getUid();
-                //Projet projet = new Projet(titre,dateLancement,dureeRealisation,dateEcheance,budget,lieu,avancement,description,image,assoID);
-                Map<String,Object> proj = new HashMap<>();
-                proj.put("titre",titre);
-                proj.put("description",description);
-                proj.put("idAsso",assoID);
-                proj.put("DateEcheance",dateEcheance);
-                proj.put("DateLancement",dateLancement);
-                proj.put("DureeRealisation",dureeRealisation);
-                proj.put("avancement",null);
-                proj.put("budget",budget);
-                proj.put("lieu",lieu);
+                // STORE IMAGE IN STORAGE
                 String imgName=System.currentTimeMillis()+"."+getFileExtension(ImageUri);
-                proj.put("imageName",imgName);
-                // STORE IMAGE IN FIREBASE
                 sr=storageReference.child(imgName);
                 sr.putFile(ImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -133,9 +122,15 @@ public class addProject extends AppCompatActivity {
                     }
                 });
 
-                proj.put("imageURL",sr.getDownloadUrl().toString());
+                final String image = null;
+                final String imageURL = sr.getDownloadUrl().toString();
+
+
+                //add data in firebase
+                assoID = fAuth.getCurrentUser().getUid();
+                Projet projet = new Projet(titre,dateLancement,dureeRealisation,dateEcheance,budget,lieu,avancement,description,image,imageURL,assoID);
                 CollectionReference collectionReference=fStore.collection("projets");
-                collectionReference.add(proj).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                collectionReference.add(projet).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d("TAG", "onSuccess: projet created for association"+assoID);
@@ -147,20 +142,6 @@ public class addProject extends AppCompatActivity {
                         Log.d("TAG", "Failed to create project");
                     }
                 });
-
-                /*CollectionReference collectionReference=fStore.collection("projets");
-                collectionReference.add(proj).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d("TAG", "onSuccess: projet created for association"+assoID);
-                        startActivity(new Intent(getApplicationContext(),liste_projets.class));
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("TAG", "Failed to create project");
-                    }
-                });*/
             }
         }
         );
@@ -176,6 +157,7 @@ public class addProject extends AppCompatActivity {
         MenuNavigationActivity.redirectActivity(this,liste_projets.class);
     }
 
+    // image stuff
     private void openFileChooser(){
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
