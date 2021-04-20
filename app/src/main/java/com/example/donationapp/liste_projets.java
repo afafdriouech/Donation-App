@@ -34,7 +34,7 @@ public class liste_projets extends AppCompatActivity {
     }
 
     public void ClickHome(View view){
-        MenuNavigationActivity.redirectActivity(this,addProject.class);
+        MenuNavigationActivity.redirectActivity(this,Associations.class);
     }
     public void ClickProjet(View view){
         MenuNavigationActivity.redirectActivity(this,liste_projets.class);
