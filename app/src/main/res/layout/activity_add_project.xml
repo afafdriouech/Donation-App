@@ -131,10 +131,10 @@
                     android:id="@+id/image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add attachement"
+                    android:text="Upload image"
                     app:backgroundTint="#B8BFBF"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="50dp"
+                    android:layout_marginBottom="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
@@ -142,12 +142,30 @@
                     app:layout_constraintTop_toBottomOf="@+id/description"
                     app:layout_constraintVertical_bias="0.211" />
 
+                <TextView
+                    android:id="@+id/successOnUpload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Image Uploaded"
+                    android:layout_marginBottom="40dp"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.502"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.307" />
+
                 <Button
                     android:id="@+id/btnAddProj"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_gravity="bottom"
+                    android:layout_gravity="end|center_horizontal"
                     android:gravity="center"
                     android:text="Ajouter"
                     android:textSize="22sp"
@@ -156,6 +174,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.56"
                     app:layout_constraintStart_toStartOf="parent" />
+
         </LinearLayout>
 
         <RelativeLayout

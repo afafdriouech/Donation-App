@@ -19,6 +19,7 @@
             android:name=".Associations"
             android:label="@string/title_activity_associations"
             android:theme="@style/Theme.DonationApp.NoActionBar" />
+        <activity android:name=".ImageActivity"></activity>
         <activity android:name=".Liste_donateurs" />
         <activity android:name=".TestMenuActivity" />
         <activity android:name=".Liste_appeldon" />
