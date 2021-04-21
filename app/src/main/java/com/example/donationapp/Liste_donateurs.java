@@ -23,7 +23,7 @@ public class Liste_donateurs extends AppCompatActivity {
     }
 
     public void ClickHome(View view){
-        MenuNavigationActivity.redirectActivity(this,TestMenuActivity.class);
+        MenuNavigationActivity.redirectActivity(this,Associations.class);
     }
     public void ClickProjet(View view){
         MenuNavigationActivity.redirectActivity(this,liste_projets.class);
