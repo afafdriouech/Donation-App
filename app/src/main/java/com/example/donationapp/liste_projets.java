@@ -56,8 +56,13 @@ public class liste_projets extends AppCompatActivity {
         MenuNavigationActivity.openDrawer(drawerLayout);
     }
 
+<<<<<<< HEAD
     public void ClickHome(View view) {
         MenuNavigationActivity.redirectActivity(this, addProject.class);
+=======
+    public void ClickHome(View view){
+        MenuNavigationActivity.redirectActivity(this,Associations.class);
+>>>>>>> f462a59803362fb43d52d2956bf2564c14748a58
     }
 
     public void ClickProjet(View view) {
