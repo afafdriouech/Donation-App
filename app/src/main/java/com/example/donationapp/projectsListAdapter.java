@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.donationapp.models.Projet;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -34,17 +35,17 @@ public class projectsListAdapter extends RecyclerView.Adapter<projectsListAdapte
     public void onBindViewHolder(@NonNull ProjectViewHolder holder, int position) {
         Projet projCurrent = mProjects.get(position);
         holder.vtitreView.setText(projCurrent.getTitre());
-        holder.vDL.setText(projCurrent.getDateLancement());
-        holder.vDE.setText(projCurrent.getDateEcheance());
-        holder.vBudget.setText(projCurrent.getBudget());
+        holder.vDL.setText("Date de lancement: "+projCurrent.getDateLancement());
+        holder.vDE.setText("Date d'echeance: "+projCurrent.getDateEcheance());
+        holder.vBudget.setText("Budget: "+projCurrent.getBudget());
         holder.vDescrip.setText(projCurrent.getDescription());
                 //.setText(uploadCurrent.getName());
-        /*Picasso.with(mContext)
-                .load(uploadCurrent.getImageUrl())
+        Picasso.with(mContext)
+                .load(projCurrent.getImageUrl())
                 .placeholder(R.mipmap.ic_launcher)
                 .fit()
                 .centerCrop()
-                .into(holder.imageView);*/
+                .into(holder.imageView);
     }
 
     @Override
@@ -66,6 +67,7 @@ public class projectsListAdapter extends RecyclerView.Adapter<projectsListAdapte
             vDE = itemView.findViewById(R.id.dateEcheanceView);
             vBudget = itemView.findViewById(R.id.budgetView);
             vDescrip = itemView.findViewById(R.id.DescriptionView);
+            imageView = itemView.findViewById(R.id.imgView);
         }
     }
 }

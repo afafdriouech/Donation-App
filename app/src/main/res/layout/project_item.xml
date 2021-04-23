@@ -59,7 +59,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="7dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/projet1" />
+            />
         <LinearLayout
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"

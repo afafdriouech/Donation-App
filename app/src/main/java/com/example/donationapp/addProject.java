@@ -35,6 +35,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 import java.util.Map;
@@ -120,12 +121,12 @@ public class addProject extends AppCompatActivity {
                 });
 
                 final String image = null;
-                final String imageURL = sr.getDownloadUrl().toString();
+                final String imageUrl = sr.getDownloadUrl().toString();
 
 
                 //add data in firebase
                 assoID = fAuth.getCurrentUser().getUid();
-                Projet projet = new Projet(titre,dateLancement,dureeRealisation,dateEcheance,budget,lieu,avancement,description,image,imageURL,assoID);
+                Projet projet = new Projet(titre,dateLancement,dureeRealisation,dateEcheance,budget,lieu,avancement,description,image,imageUrl,assoID);
                 CollectionReference collectionReference=fStore.collection("projets");
                 collectionReference.add(projet).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override

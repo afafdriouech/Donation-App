@@ -2,12 +2,15 @@ package com.example.donationapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.donationapp.R;
 import com.example.donationapp.models.Projet;
@@ -22,9 +25,11 @@ import java.util.List;
 
 public class ProjectsList extends AppCompatActivity {
 
+    DrawerLayout drawerLayout;
     private RecyclerView mRecyclerView;
+    ImageButton AddBtn;
+
     private projectsListAdapter projectsListAdapter;
-    //private CollectionReference mCollectionRef;
     private List<Projet> mProjects;
     FirebaseFirestore fStore;
 
@@ -32,10 +37,22 @@ public class ProjectsList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects_list);
+        drawerLayout = findViewById(R.id.drawer_layout);
 
+        //handle add button
+        AddBtn = findViewById(R.id.add);
+        AddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), addProject.class));
+            }
+        });
+
+        //get asso id
         Intent intent = getIntent();
         String assoID = intent.getStringExtra("assoID");
 
+        // get projects list from DB
         fStore = FirebaseFirestore.getInstance();
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -63,5 +80,24 @@ public class ProjectsList extends AppCompatActivity {
                 }
             }
         });
+    }
+    public void ClickMenu(View view) {
+        MenuNavigationActivity.openDrawer(drawerLayout);
+    }
+
+    public void ClickHome(View view){
+        MenuNavigationActivity.redirectActivity(this,Associations.class);
+    }
+
+    public void ClickProjet(View view) {
+        MenuNavigationActivity.redirectActivity(this, liste_projets.class);
+    }
+
+    public void ClickDonationCall(View view) {
+        MenuNavigationActivity.redirectActivity(this, Liste_appeldon.class);
+    }
+
+    public void ClickDonCalled(View view) {
+        MenuNavigationActivity.redirectActivity(this, TestMenuActivity.class);
     }
 }

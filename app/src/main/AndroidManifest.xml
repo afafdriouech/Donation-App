@@ -11,20 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DonationApp">
-<<<<<<< HEAD
         <activity android:name=".ProjectsList"></activity>
         <activity android:name=".Test_projets" />
-=======
-        <activity android:name=".Liste_associations" />
-        <activity android:name=".Recommendations" />
+        <activity android:name=".Liste_associations"/>
+        <activity android:name=".Recommendations"/>
         <activity android:name=".Favorites" />
         <activity android:name=".Fragment1" />
         <activity
             android:name=".Associations"
             android:label="@string/title_activity_associations"
             android:theme="@style/Theme.DonationApp.NoActionBar" />
-        <activity android:name=".ImageActivity"></activity>
->>>>>>> f462a59803362fb43d52d2956bf2564c14748a58
         <activity android:name=".Liste_donateurs" />
         <activity android:name=".TestMenuActivity" />
         <activity android:name=".Liste_appeldon" />
