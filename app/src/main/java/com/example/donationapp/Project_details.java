@@ -11,33 +11,15 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class liste_projets extends AppCompatActivity {
 
+
+public class Project_details extends AppCompatActivity {
     DrawerLayout drawerLayout;
-    ImageButton AddBtn;
-    TextView ViewProject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_liste_projets);
-
+        setContentView(R.layout.activity_project_details);
         drawerLayout = findViewById(R.id.drawer_layout);
-        AddBtn = findViewById(R.id.add);
-        AddBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),addProject.class));
-            }
-        });
-
-        ViewProject = findViewById(R.id.viewProject);
-        ViewProject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Project_details.class));
-            }
-        });
-
     }
     public void ClickMenu(View view){
         MenuNavigationActivity.openDrawer(drawerLayout);
@@ -68,4 +50,5 @@ public class liste_projets extends AppCompatActivity {
         super.onPause();
         MenuNavigationActivity.closeDrawer(drawerLayout);
     }
+
 }

@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DonationApp">
+        <activity android:name=".Project_details"></activity>
         <activity android:name=".Liste_associations" />
         <activity android:name=".Recommendations" />
         <activity android:name=".Favorites" />
@@ -19,7 +20,7 @@
             android:name=".Associations"
             android:label="@string/title_activity_associations"
             android:theme="@style/Theme.DonationApp.NoActionBar" />
-        <activity android:name=".ImageActivity"></activity>
+        <activity android:name=".ImageActivity" />
         <activity android:name=".Liste_donateurs" />
         <activity android:name=".TestMenuActivity" />
         <activity android:name=".Liste_appeldon" />
