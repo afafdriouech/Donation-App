@@ -48,6 +48,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="25dp"
+                    android:text="Project's details:"
+                    android:textColor="#700817"
+
+                    android:layout_marginTop="7dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:text="Budget:50000"
                     android:layout_marginTop="7dp"/>
@@ -85,8 +93,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="600dp"
-            android:layout_marginLeft="130dp"
-            android:text="Donate Now"/>
+            android:layout_marginLeft="120dp"
+            android:text="Donate Now"
+            android:textSize="20dp"/>
 
 
     </RelativeLayout>
