@@ -25,7 +25,6 @@
         <activity android:name=".TestMenuActivity" />
         <activity android:name=".Liste_appeldon" />
         <activity android:name=".MenuNavigationActivity" />
-        <activity android:name=".liste_projets" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

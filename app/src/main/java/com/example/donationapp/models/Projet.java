@@ -1,6 +1,8 @@
 package com.example.donationapp.models;
 
 
+import com.google.firebase.firestore.Exclude;
+
 public class Projet{
 
     private String titre;
@@ -14,6 +16,8 @@ public class Projet{
     private String image;
     private String imageUrl;
     private String idAsso;
+    private String key;
+
 
     public Projet(String titre, String DateLancement, String DureeRealisation, String DateEcheance, String budget, String lieu, String avancement, String description, String image, String imageUrl, String idAsso) {
         this.titre = titre;
@@ -117,5 +121,14 @@ public class Projet{
 
     public void setIdAsso(String idAsso) {
         this.idAsso = idAsso;
+    }
+
+    @Exclude
+    public String getKey() {
+        return key;
+    }
+    @Exclude
+    public void setKey(String key){
+        this.key = key;
     }
 }

@@ -25,7 +25,7 @@ public class TestMenuActivity extends AppCompatActivity {
         MenuNavigationActivity.redirectActivity(this,TestMenuActivity.class);
     }
     public void ClickProjet(View view){
-        MenuNavigationActivity.redirectActivity(this,liste_projets.class);
+        MenuNavigationActivity.redirectActivity(this,ProjectsList.class);
     }
 
     public void ClickDonationCall(View view){

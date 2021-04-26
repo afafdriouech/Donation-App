@@ -24,7 +24,7 @@
                 android:textSize="30dp"/>
             <TextView
                 android:id="@+id/dateLancementView"
-                android:layout_width="wrap_content"
+                android:layout_width="195dp"
                 android:layout_height="wrap_content"
                 android:text="Date de lancement:4/3/2021"
                 android:textColor="#393836"
@@ -46,7 +46,7 @@
 
             <TextView
                 android:id="@+id/DescriptionView"
-                android:layout_width="wrap_content"
+                android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:text="Description here"
                 android:textColor="#393836"
@@ -57,8 +57,8 @@
             android:id="@+id/imgView"
             android:layout_width="140dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="2dp"
             />
         <LinearLayout
             android:layout_marginTop="10dp"

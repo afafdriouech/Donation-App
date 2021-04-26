@@ -1,7 +1,10 @@
 package com.example.donationapp;
 
 import android.content.Context;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -19,6 +22,7 @@ public class projectsListAdapter extends RecyclerView.Adapter<projectsListAdapte
 
     private Context mContext;
     private List<Projet> mProjects;
+    private OnItemClickListener mListener;
     public projectsListAdapter(Context context, List<Projet> projects) {
         mContext = context;
         mProjects = projects;
@@ -35,7 +39,7 @@ public class projectsListAdapter extends RecyclerView.Adapter<projectsListAdapte
     public void onBindViewHolder(@NonNull ProjectViewHolder holder, int position) {
         Projet projCurrent = mProjects.get(position);
         holder.vtitreView.setText(projCurrent.getTitre());
-        holder.vDL.setText("Date de lancement: "+projCurrent.getDateLancement());
+        holder.vDL.setText("Date lancement: "+projCurrent.getDateLancement());
         holder.vDE.setText("Date d'echeance: "+projCurrent.getDateEcheance());
         holder.vBudget.setText("Budget: "+projCurrent.getBudget());
         holder.vDescrip.setText(projCurrent.getDescription());
@@ -53,7 +57,8 @@ public class projectsListAdapter extends RecyclerView.Adapter<projectsListAdapte
         return mProjects.size();
     }
 
-    public class ProjectViewHolder extends RecyclerView.ViewHolder {
+    public class ProjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnCreateContextMenuListener,
+    MenuItem.OnMenuItemClickListener{
         public TextView vtitreView;
         public TextView vDL;
         public TextView vDE;
@@ -68,6 +73,55 @@ public class projectsListAdapter extends RecyclerView.Adapter<projectsListAdapte
             vBudget = itemView.findViewById(R.id.budgetView);
             vDescrip = itemView.findViewById(R.id.DescriptionView);
             imageView = itemView.findViewById(R.id.imgView);
+
+            itemView.setOnClickListener(this);
+            itemView.setOnCreateContextMenuListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            if (mListener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    mListener.onItemClick(position);
+                }
+            }
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            menu.setHeaderTitle("Select Action");
+            MenuItem update = menu.add(Menu.NONE, 1, 1, "Update");
+            MenuItem delete = menu.add(Menu.NONE, 2, 2, "Delete");
+            update.setOnMenuItemClickListener(this);
+            delete.setOnMenuItemClickListener(this);
+        }
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            if (mListener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    switch (item.getItemId()) {
+                        case 1:
+                            mListener.onUpdateClick(position);
+                            return true;
+                        case 2:
+                            mListener.onDeleteClick(position);
+                            return true;
+                    }
+                }
+            }
+            return false;
+        }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+        void onUpdateClick(int position);
+        void onDeleteClick(int position);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
     }
 }

@@ -51,7 +51,7 @@ public class MenuNavigationActivity extends AppCompatActivity {
     }
     public void ClickProjet(View view){
 
-        redirectActivity(this,liste_projets.class);
+        redirectActivity(this,ProjectsList.class);
     }
     public void ClickDonationCall(View view){
 

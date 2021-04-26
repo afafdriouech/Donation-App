@@ -1,6 +1,7 @@
 package com.example.donationapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,20 +12,27 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.donationapp.R;
 import com.example.donationapp.models.Projet;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 
-public class ProjectsList extends AppCompatActivity {
-
+public class ProjectsList extends AppCompatActivity implements projectsListAdapter.OnItemClickListener{
     DrawerLayout drawerLayout;
     private RecyclerView mRecyclerView;
     ImageButton AddBtn;
@@ -32,6 +40,7 @@ public class ProjectsList extends AppCompatActivity {
     private projectsListAdapter projectsListAdapter;
     private List<Projet> mProjects;
     FirebaseFirestore fStore;
+    private FirebaseStorage mStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +63,7 @@ public class ProjectsList extends AppCompatActivity {
 
         // get projects list from DB
         fStore = FirebaseFirestore.getInstance();
+        mStorage = FirebaseStorage.getInstance();
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -67,12 +77,26 @@ public class ProjectsList extends AppCompatActivity {
                     // Get the query snapshot from the task result
                     QuerySnapshot querySnapshot = task.getResult();
 
+/////////////////////////////////////////////
+                    /*if (querySnapshot != null) {
+                        while (querySnapshot.iterator().hasNext()) {
+                            Projet projet = querySnapshot.iterator().next().toObject(Projet.class);
+                            mProjects.add(projet);
+                            String itemId = querySnapshot.iterator().next().getId();
+                            projet.setKey(itemId);
+                        }
+                        projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
+                        projectsListAdapter.notifyDataSetChanged();
+                        mRecyclerView.setAdapter(projectsListAdapter);
+                        projectsListAdapter.setOnItemClickListener(ProjectsList.this);
+                        //mProgressCircle.setVisibility(View.INVISIBLE);
+                    }*/
                     if (querySnapshot != null) {
-
                         // Get the projects list from the query snapshot
                         mProjects = querySnapshot.toObjects(Projet.class);
                         projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
                         mRecyclerView.setAdapter(projectsListAdapter);
+                        projectsListAdapter.setOnItemClickListener(ProjectsList.this);
                         //mProgressCircle.setVisibility(View.INVISIBLE);
                     }
                 } else {
@@ -81,6 +105,11 @@ public class ProjectsList extends AppCompatActivity {
             }
         });
     }
+    //////////////on created
+    protected void onStart() {
+        super.onStart();
+    }
+
     public void ClickMenu(View view) {
         MenuNavigationActivity.openDrawer(drawerLayout);
     }
@@ -90,7 +119,7 @@ public class ProjectsList extends AppCompatActivity {
     }
 
     public void ClickProjet(View view) {
-        MenuNavigationActivity.redirectActivity(this, liste_projets.class);
+        MenuNavigationActivity.redirectActivity(this, ProjectsList.class);
     }
 
     public void ClickDonationCall(View view) {
@@ -99,5 +128,32 @@ public class ProjectsList extends AppCompatActivity {
 
     public void ClickDonCalled(View view) {
         MenuNavigationActivity.redirectActivity(this, TestMenuActivity.class);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Toast.makeText(this, "Normal click at position: " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onUpdateClick(int position) {
+        Toast.makeText(this, "update at position: " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDeleteClick(int position) {
+        Projet selectedItem = mProjects.get(position);
+        final String selectedKey = selectedItem.getKey();
+        /*StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getImageUrl().toString());
+        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                fStore.collection("projets").document(selectedKey).delete();
+                Toast.makeText(ProjectsList.this, "Item deleted", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+        fStore.collection("projets").document(selectedKey).delete();
+        Toast.makeText(ProjectsList.this, "Item deleted", Toast.LENGTH_SHORT).show();
+
     }
 }
