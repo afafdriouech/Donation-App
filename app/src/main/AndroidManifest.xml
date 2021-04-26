@@ -17,7 +17,6 @@
         <activity android:name=".Recommendations" />
   
         <activity android:name=".ProjectsList"></activity>
-        <activity android:name=".Test_projets" />
         <activity android:name=".Liste_associations"/>
         <activity android:name=".Recommendations"/>
 

@@ -157,8 +157,8 @@ public class addProject extends AppCompatActivity {
 
 
     // retrieve data from DB
-    private void retrieveProjects(String assoID){
-        CollectionReference collectionReference=fStore.collection("projets");
+    //private void retrieveProjects(String assoID){
+        //CollectionReference collectionReference=fStore.collection("projets");
         /*Query query = collectionReference.whereEqualTo("idAsso",assoID);
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -169,7 +169,7 @@ public class addProject extends AppCompatActivity {
                 }
             }
         });*/
-        DocumentReference doc = collectionReference.document("B0a3kOok10dwm53M6Xpk");
+        /*DocumentReference doc = collectionReference.document("B0a3kOok10dwm53M6Xpk");
         doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -183,7 +183,7 @@ public class addProject extends AppCompatActivity {
                 else { System.out.println("erroooooooooooooooooooor");}
             }
         });
-    }
+    }*/
 
     // image stuff
     private void openFileChooser(){
