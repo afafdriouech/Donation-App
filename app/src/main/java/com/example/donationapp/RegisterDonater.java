@@ -101,5 +101,12 @@ public class RegisterDonater extends AppCompatActivity {
                 });
             }
         });
+
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),LoginDonater.class));
+            }
+        });
     }
 }
