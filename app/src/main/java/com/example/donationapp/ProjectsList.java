@@ -137,6 +137,7 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
         MenuNavigationActivity.redirectActivity(this,Liste_donateurs.class);
     }
     public void ClickLogout(View view){
+        //MenuNavigationActivity.logout(this);
         MenuNavigationActivity.logout(this);
     }
 

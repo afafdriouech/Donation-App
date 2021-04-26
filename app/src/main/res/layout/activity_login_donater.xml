@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterDonater">
+    tools:context=".LoginDonater">
+
 
     <ImageView
         android:id="@+id/imageView2"
@@ -22,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
-        android:text="Create new account"
+        android:text="Login to your account"
         android:textColor="@color/teal_700"
         android:textColorHint="#2D2F31"
         android:textSize="18sp"
@@ -33,11 +34,13 @@
         app:layout_constraintVertical_bias="0.011" />
 
     <EditText
-        android:id="@+id/editTxtNameD"
+        android:id="@+id/TxtEmailD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Full name"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/acc"
         app:layout_constraintHorizontal_bias="0.509"
@@ -46,46 +49,7 @@
         app:layout_constraintVertical_bias="0.055" />
 
     <EditText
-        android:id="@+id/editTxtAdrD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:ems="10"
-        android:hint="City"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/editTxtPasswordD"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTxtPasswordD"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtPasswordD" />
-
-    <EditText
-        android:id="@+id/PhoneNumberD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Phone number"
-        android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="@+id/editTxtAdrD"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTxtAdrD"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtAdrD" />
-
-    <Button
-        android:id="@+id/btnRegisterD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
-        android:text="Sign up"
-        app:backgroundTint="@color/teal_700"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PhoneNumberD"
-        app:layout_constraintVertical_bias="0.425" />
-
-    <EditText
-        android:id="@+id/editTxtPasswordD"
+        android:id="@+id/TxtPasswdD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -93,40 +57,39 @@
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTxtEmailD"
+        app:layout_constraintEnd_toEndOf="@+id/TxtEmailD"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTxtEmailD"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtEmailD"
+        app:layout_constraintStart_toStartOf="@+id/TxtEmailD"
+        app:layout_constraintTop_toBottomOf="@+id/TxtEmailD"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/editTxtEmailD"
+    <Button
+        android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
+        android:layout_marginBottom="68dp"
+        android:text="Sign in"
+        app:backgroundTint="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTxtNameD"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTxtNameD"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtNameD"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TxtPasswdD"
+        app:layout_constraintVertical_bias="0.425" />
+
 
     <TextView
-        android:id="@+id/signinD"
+        android:id="@+id/signupLinkD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Have already an account?login here"
+        android:text="Create an account"
         android:textColor="@color/teal_700"
         android:textColorHint="#2D2F31"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnRegisterD"
+        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/btnRegisterD"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegisterD"
+        app:layout_constraintStart_toStartOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
         app:layout_constraintVertical_bias="0.264" />
 
     <ProgressBar
@@ -138,7 +101,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signinD"
+        app:layout_constraintTop_toBottomOf="@+id/signupLinkD"
         app:layout_constraintVertical_bias="0.493" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

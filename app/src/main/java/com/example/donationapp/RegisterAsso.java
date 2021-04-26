@@ -92,7 +92,7 @@ public class RegisterAsso extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(RegisterAsso.this, "user created",Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(RegisterAsso.this, "user created",Toast.LENGTH_SHORT).show();
                             assoID = fAuth.getCurrentUser().getUid();
 
                             ///// A revoir
