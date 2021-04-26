@@ -23,6 +23,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -74,23 +75,23 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    // Get the query snapshot from the task result
-                    QuerySnapshot querySnapshot = task.getResult();
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Projet p = document.toObject(Projet.class);
+                        mProjects.add(p);
+                        String itemId = document.getId();
+                        p.setKey(itemId);
+                        Log.d("TAG", itemId + " => " + document.getData());
+                    }
+                    projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
+                    projectsListAdapter.notifyDataSetChanged();
+                    mRecyclerView.setAdapter(projectsListAdapter);
+                    //mProgressCircle.setVisibility(View.INVISIBLE);
+                    projectsListAdapter.setOnItemClickListener(ProjectsList.this);
 
 /////////////////////////////////////////////
-                    /*if (querySnapshot != null) {
-                        while (querySnapshot.iterator().hasNext()) {
-                            Projet projet = querySnapshot.iterator().next().toObject(Projet.class);
-                            mProjects.add(projet);
-                            String itemId = querySnapshot.iterator().next().getId();
-                            projet.setKey(itemId);
-                        }
-                        projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
-                        projectsListAdapter.notifyDataSetChanged();
-                        mRecyclerView.setAdapter(projectsListAdapter);
-                        projectsListAdapter.setOnItemClickListener(ProjectsList.this);
-                        //mProgressCircle.setVisibility(View.INVISIBLE);
-                    }*/
+                    //methode 1 working
+                    // Get the query snapshot from the task result
+                    /*QuerySnapshot querySnapshot = task.getResult();
                     if (querySnapshot != null) {
                         // Get the projects list from the query snapshot
                         mProjects = querySnapshot.toObjects(Projet.class);
@@ -98,7 +99,17 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
                         mRecyclerView.setAdapter(projectsListAdapter);
                         projectsListAdapter.setOnItemClickListener(ProjectsList.this);
                         //mProgressCircle.setVisibility(View.INVISIBLE);
-                    }
+                    }*/
+                    /*QuerySnapshot querySnapshot = task.getResult();
+                    if (querySnapshot != null) {
+                        while (querySnapshot.iterator().hasNext()) {
+                            Projet projet = querySnapshot.iterator().next().toObject(Projet.class);
+                            mProjects.add(projet);
+                            String itemId = querySnapshot.iterator().next().getId();
+                            projet.setKey(itemId);
+                        }
+                    }*/
+//////////////////////////////////////////
                 } else {
                     Log.d("tag", "Error getting documents: ", task.getException());
                 }
