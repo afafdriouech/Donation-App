@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="#D3D3CC"
     android:id="@+id/drawer_layout"
-    tools:context=".liste_projets"
-    >
+    tools:context=".liste_projets">
 
     <ScrollView
         android:layout_width="match_parent"
