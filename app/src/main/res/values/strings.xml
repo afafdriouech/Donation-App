@@ -16,4 +16,5 @@
     <string name="tab_text_1">Associations</string>
     <string name="tab_text_2">Favorites</string>
     <string name="tab_text_3">Recommended</string>
+    <color name="greenBg">#f1f8e9</color>
 </resources>

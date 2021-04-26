@@ -41,7 +41,7 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
 
     private projectsListAdapter projectsListAdapter;
     private List<Projet> mProjects;
-    FirebaseFirestore fStore;
+    private FirebaseFirestore fStore;
     private FirebaseStorage mStorage;
 
     @Override
@@ -121,21 +121,23 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
     public void ClickMenu(View view) {
         MenuNavigationActivity.openDrawer(drawerLayout);
     }
-
     public void ClickHome(View view){
         MenuNavigationActivity.redirectActivity(this,Associations.class);
     }
-
     public void ClickProjet(View view) {
         MenuNavigationActivity.redirectActivity(this, ProjectsList.class);
     }
-
     public void ClickDonationCall(View view) {
         MenuNavigationActivity.redirectActivity(this, Liste_appeldon.class);
     }
-
     public void ClickDonCalled(View view) {
         MenuNavigationActivity.redirectActivity(this, TestMenuActivity.class);
+    }
+    public void ClickDonators(View view){
+        MenuNavigationActivity.redirectActivity(this,Liste_donateurs.class);
+    }
+    public void ClickLogout(View view){
+        MenuNavigationActivity.logout(this);
     }
 
     @Override

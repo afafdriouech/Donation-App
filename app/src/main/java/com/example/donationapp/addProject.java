@@ -155,16 +155,6 @@ public class addProject extends AppCompatActivity {
         );
     }
 
-    public void ClickMenu(View view){
-        MenuNavigationActivity.openDrawer(drawerLayout);
-    }
-    public void ClickHome(View view){
-        MenuNavigationActivity.redirectActivity(this,TestMenuActivity.class);
-    }
-    public void ClickProjet(View view){
-        MenuNavigationActivity.redirectActivity(this,ProjectsList.class);
-    }
-
 
     // retrieve data from DB
     private void retrieveProjects(String assoID){
@@ -219,4 +209,30 @@ public class addProject extends AppCompatActivity {
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(uri));
     }
+
+    // Menu stuff
+
+    public void ClickMenu(View view){
+        MenuNavigationActivity.openDrawer(drawerLayout);
+    }
+
+    public void ClickHome(View view){
+        MenuNavigationActivity.redirectActivity(this,Associations.class);
+    }
+    public void ClickProjet(View view){
+        MenuNavigationActivity.redirectActivity(this,ProjectsList.class);
+    }
+    public void ClickDonationCall(View view){
+        MenuNavigationActivity.redirectActivity(this,Liste_appeldon.class);
+    }
+    public void ClickDonCalled(View view){
+        MenuNavigationActivity.redirectActivity(this,addProject.class);
+    }
+    public void ClickDonators(View view){
+        MenuNavigationActivity.redirectActivity(this,Liste_donateurs.class);
+    }
+    public void ClickLogout(View view){
+        MenuNavigationActivity.logout(this);
+    }
+
 }

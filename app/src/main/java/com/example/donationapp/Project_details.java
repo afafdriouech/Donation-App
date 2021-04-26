@@ -45,8 +45,8 @@ public class Project_details extends AppCompatActivity implements Serializable {
         //setting the card view with the project infos
         mPrjtitle.setText(selectedProject.getTitre());
         mPrjBudget.setText("Budget: "+selectedProject.getBudget());
-        mPrjDL.setText("Date lancement:"+selectedProject.getDateLancement());
-        mPrjDE.setText("Date d'écheance:"+selectedProject.getDateEcheance());
+        mPrjDL.setText("Date lancement: "+selectedProject.getDateLancement());
+        mPrjDE.setText("Date d'écheance: "+selectedProject.getDateEcheance());
         mPrjDescrip.setText(selectedProject.getDescription());
         Picasso.with(this).load(selectedProject.getImageUrl())
                 .placeholder(R.mipmap.ic_launcher).into(mPrjImage);

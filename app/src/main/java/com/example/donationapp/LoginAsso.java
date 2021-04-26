@@ -112,10 +112,10 @@ public class LoginAsso extends AppCompatActivity {
 
     }
 
-    // retrieve data from DB
-    private void retrieveProjects(String assoID){
-        Task<QuerySnapshot> collectionReference=fStore.collection("projets").
-                whereEqualTo("idAsso",assoID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+    // retrieve data from DB (works!!)
+    /*private void retrieveProjects(String assoID) {
+        Task<QuerySnapshot> collectionReference = fStore.collection("projets").
+                whereEqualTo("idAsso", assoID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
@@ -132,7 +132,7 @@ public class LoginAsso extends AppCompatActivity {
                 }
             }
         });
-    
+    }*/
     // retrieve data from DB
     /*private void retrieveProjects(String assoID){
         Task<QuerySnapshot> collectionReference=fStore.collection("projets").
@@ -165,5 +165,4 @@ public class LoginAsso extends AppCompatActivity {
                 else { System.out.println("erroooooooooooooooooooor");}
             }
         });*/
-    }
 }

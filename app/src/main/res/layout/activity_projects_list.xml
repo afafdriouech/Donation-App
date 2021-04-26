@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D3D3CC"
+    android:background="@color/greenBg"
     android:id="@+id/drawer_layout"
     app:layoutManager="androidx.drawerlayout.widget.LinearLayoutManager"
     tools:context=".ProjectsList">
@@ -25,7 +25,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="13dp"
                 android:layout_marginBottom="10dp"
-                android:text="Projects list"
+                android:text="Projects"
                 android:textColor="#25221E"
                 android:textSize="30dp"
                 tools:ignore="MissingConstraints"
