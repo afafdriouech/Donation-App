@@ -3,7 +3,9 @@ package com.example.donationapp.models;
 
 import com.google.firebase.firestore.Exclude;
 
-public class Projet{
+import java.io.Serializable;
+
+public class Projet implements Serializable {
 
     private String titre;
     private String DateLancement;

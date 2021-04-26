@@ -10,15 +10,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
         <ImageView
-            android:id="@+id/test_image"
+            android:id="@+id/PrjImage"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:scaleType="fitXY"
             android:src="@drawable/projet1" />
 
-
-
             <TextView
+                android:id="@+id/Prjtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dir Idik"
@@ -26,8 +25,8 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="180dp"
                 android:textSize="50dp"
-
                 android:textColor="#FFFFFF"/>
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,27 +48,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
-                    android:text="Project's details:"
+                    android:text="Project details:"
                     android:textColor="#700817"
 
                     android:layout_marginTop="7dp"/>
                 <TextView
+                    android:id="@+id/PrjBudget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
-                    android:text="Budget:50000"
                     android:layout_marginTop="7dp"/>
                 <TextView
+                    android:id="@+id/PrjDL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
-                    android:text="Date lancement:31/7/2021"
                     android:layout_marginTop="7dp"/>
                 <TextView
+                    android:id="@+id/PrjDE"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
-                    android:text="Date d'écheance:31/7/2020"
                     android:layout_marginTop="7dp"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -78,6 +77,7 @@
                     android:text="Description:"
                     android:layout_marginTop="7dp"/>
                 <TextView
+                    android:id="@+id/PrjDescrip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
@@ -89,13 +89,6 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="600dp"
-            android:layout_marginLeft="120dp"
-            android:text="Donate Now"
-            android:textSize="20dp"/>
 
 
     </RelativeLayout>

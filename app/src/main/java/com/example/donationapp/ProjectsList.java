@@ -28,12 +28,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.Serializable;
 import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
 
-public class ProjectsList extends AppCompatActivity implements projectsListAdapter.OnItemClickListener{
+public class ProjectsList extends AppCompatActivity implements projectsListAdapter.OnItemClickListener,Serializable{
     DrawerLayout drawerLayout;
     private RecyclerView mRecyclerView;
     ImageButton AddBtn;
@@ -116,10 +117,6 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
             }
         });
     }
-    //////////////on created
-    protected void onStart() {
-        super.onStart();
-    }
 
     public void ClickMenu(View view) {
         MenuNavigationActivity.openDrawer(drawerLayout);
@@ -144,6 +141,10 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
     @Override
     public void onItemClick(int position) {
         Toast.makeText(this, "Normal click at position: " + position, Toast.LENGTH_SHORT).show();
+        Projet selectedItem = mProjects.get(position);
+        Intent intent = new Intent(ProjectsList.this,Project_details.class);
+        intent.putExtra("ProjetClass", (Serializable) selectedItem);
+        startActivity(intent);
     }
 
     @Override
@@ -165,6 +166,5 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
         });*/
         fStore.collection("projets").document(selectedKey).delete();
         Toast.makeText(ProjectsList.this, "Item deleted", Toast.LENGTH_SHORT).show();
-
     }
 }
