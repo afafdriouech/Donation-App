@@ -57,8 +57,7 @@ public class projectsListAdapter extends RecyclerView.Adapter<projectsListAdapte
         return mProjects.size();
     }
 
-    public class ProjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnCreateContextMenuListener,
-    MenuItem.OnMenuItemClickListener{
+    public class ProjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener{
         public TextView vtitreView;
         public TextView vDL;
         public TextView vDE;
@@ -108,6 +107,7 @@ public class projectsListAdapter extends RecyclerView.Adapter<projectsListAdapte
                             return true;
                         case 2:
                             mListener.onDeleteClick(position);
+                            //notifyDataSetChanged();
                             return true;
                     }
                 }

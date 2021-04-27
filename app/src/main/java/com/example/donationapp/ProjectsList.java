@@ -43,6 +43,7 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
     private List<Projet> mProjects;
     private FirebaseFirestore fStore;
     private FirebaseStorage mStorage;
+    String assoID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,7 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
 
         //get asso id
         Intent intent = getIntent();
-        String assoID = intent.getStringExtra("assoID");
+        assoID = intent.getStringExtra("assoID");
 
         // get projects list from DB
         fStore = FirebaseFirestore.getInstance();
@@ -71,6 +72,10 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //mProgressCircle = findViewById(R.id.progress_circle);
         mProjects = new ArrayList<>();
+        projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
+        mRecyclerView.setAdapter(projectsListAdapter);
+        projectsListAdapter.setOnItemClickListener(ProjectsList.this);
+
         Task<QuerySnapshot> collectionReference=fStore.collection("projets").
                 whereEqualTo("idAsso",assoID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -83,11 +88,11 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
                         p.setKey(itemId);
                         Log.d("TAG", itemId + " => " + document.getData());
                     }
-                    projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
-                    projectsListAdapter.notifyDataSetChanged();
-                    mRecyclerView.setAdapter(projectsListAdapter);
+                    //projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
+                    //mRecyclerView.setAdapter(projectsListAdapter);
                     //mProgressCircle.setVisibility(View.INVISIBLE);
-                    projectsListAdapter.setOnItemClickListener(ProjectsList.this);
+                    projectsListAdapter.notifyDataSetChanged();
+                    //projectsListAdapter.setOnItemClickListener(ProjectsList.this);
 
 /////////////////////////////////////////////
                     //methode 1 working
@@ -125,7 +130,10 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
         MenuNavigationActivity.redirectActivity(this,Associations.class);
     }
     public void ClickProjet(View view) {
-        MenuNavigationActivity.redirectActivity(this, ProjectsList.class);
+        //MenuNavigationActivity.redirectActivity(this, ProjectsList.class);
+        Intent intent = new Intent(getApplicationContext(),ProjectsList.class);
+        intent.putExtra("assoID",assoID);
+        startActivity(intent);
     }
     public void ClickDonationCall(View view) {
         MenuNavigationActivity.redirectActivity(this, Liste_appeldon.class);
@@ -159,15 +167,18 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
     public void onDeleteClick(int position) {
         Projet selectedItem = mProjects.get(position);
         final String selectedKey = selectedItem.getKey();
-        /*StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getImageUrl().toString());
+        StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getImageUrl().toString());
         imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
+                //fStore.collection("projets").document(selectedKey).delete();
                 fStore.collection("projets").document(selectedKey).delete();
+                //projectsListAdapter.notifyDataSetChanged();
                 Toast.makeText(ProjectsList.this, "Item deleted", Toast.LENGTH_SHORT).show();
             }
-        });*/
-        fStore.collection("projets").document(selectedKey).delete();
-        Toast.makeText(ProjectsList.this, "Item deleted", Toast.LENGTH_SHORT).show();
+        });
+        /*fStore.collection("projets").document(selectedKey).delete();
+        Toast.makeText(ProjectsList.this, "Item deleted", Toast.LENGTH_SHORT).show();*/
     }
+
 }

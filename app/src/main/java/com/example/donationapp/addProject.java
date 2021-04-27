@@ -124,8 +124,7 @@ public class addProject extends AppCompatActivity {
                         Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                         while (!urlTask.isSuccessful());
                         Uri downloadUrl = urlTask.getResult();
-                         imageUrl = String.valueOf(downloadUrl);
-
+                        imageUrl = String.valueOf(downloadUrl);
 
                         //add data in firebase
                         assoID = fAuth.getCurrentUser().getUid();
@@ -136,7 +135,9 @@ public class addProject extends AppCompatActivity {
                             public void onSuccess(DocumentReference documentReference) {
                                 Log.d("TAG", "onSuccess: projet created for association"+assoID);
                                 //retrieveProjects(assoID);
-                                startActivity(new Intent(getApplicationContext(),ProjectsList.class));
+                                Intent intent = new Intent(getApplicationContext(),ProjectsList.class);
+                                intent.putExtra("assoID",assoID);
+                                startActivity(intent);
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -144,7 +145,6 @@ public class addProject extends AppCompatActivity {
                                 Log.d("TAG", "Failed to create project");
                             }
                         });
-
 
                         Toast.makeText(addProject.this,"upload successful",Toast.LENGTH_LONG ).show();
                     }
