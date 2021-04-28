@@ -22,6 +22,7 @@ public class projectsListAdapter extends RecyclerView.Adapter<projectsListAdapte
 
     private Context mContext;
     private List<Projet> mProjects;
+    private String id;
     private OnItemClickListener mListener;
     public projectsListAdapter(Context context, List<Projet> projects) {
         mContext = context;
@@ -107,7 +108,6 @@ public class projectsListAdapter extends RecyclerView.Adapter<projectsListAdapte
                             return true;
                         case 2:
                             mListener.onDeleteClick(position);
-                            //notifyDataSetChanged();
                             return true;
                     }
                 }

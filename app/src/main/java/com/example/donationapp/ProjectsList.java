@@ -86,12 +86,11 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
                         mProjects.add(p);
                         String itemId = document.getId();
                         p.setKey(itemId);
-                        Log.d("TAG", itemId + " => " + document.getData());
+                        //Log.d("TAG", itemId + " => " + document.getData());
                     }
-                    //projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
+                   // projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
                     //mRecyclerView.setAdapter(projectsListAdapter);
                     //mProgressCircle.setVisibility(View.INVISIBLE);
-                    projectsListAdapter.notifyDataSetChanged();
                     //projectsListAdapter.setOnItemClickListener(ProjectsList.this);
 
 /////////////////////////////////////////////
@@ -119,6 +118,7 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
                 } else {
                     Log.d("tag", "Error getting documents: ", task.getException());
                 }
+                projectsListAdapter.notifyDataSetChanged();
             }
         });
     }
@@ -171,14 +171,12 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
         imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                //fStore.collection("projets").document(selectedKey).delete();
                 fStore.collection("projets").document(selectedKey).delete();
                 //projectsListAdapter.notifyDataSetChanged();
+                projectsListAdapter.notifyItemChanged(position);
                 Toast.makeText(ProjectsList.this, "Item deleted", Toast.LENGTH_SHORT).show();
             }
         });
-        /*fStore.collection("projets").document(selectedKey).delete();
-        Toast.makeText(ProjectsList.this, "Item deleted", Toast.LENGTH_SHORT).show();*/
     }
 
 }
