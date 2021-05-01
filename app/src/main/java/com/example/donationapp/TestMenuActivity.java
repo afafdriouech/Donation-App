@@ -13,7 +13,7 @@ public class TestMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_menu);
+        setContentView(R.layout.activity_test_associations);
 
         drawerLayout = findViewById(R.id.drawer_layout);
     }

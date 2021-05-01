@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.donationapp.R;
+import com.example.donationapp.models.Association;
 import com.example.donationapp.models.Projet;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -88,34 +89,9 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
                         p.setKey(itemId);
                         Log.d("TAG", itemId + " => " + document.getData());
                     }
-                    //projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
-                    //mRecyclerView.setAdapter(projectsListAdapter);
-                    //mProgressCircle.setVisibility(View.INVISIBLE);
-                    projectsListAdapter.notifyDataSetChanged();
-                    //projectsListAdapter.setOnItemClickListener(ProjectsList.this);
 
-/////////////////////////////////////////////
-                    //methode 1 working
-                    // Get the query snapshot from the task result
-                    /*QuerySnapshot querySnapshot = task.getResult();
-                    if (querySnapshot != null) {
-                        // Get the projects list from the query snapshot
-                        mProjects = querySnapshot.toObjects(Projet.class);
-                        projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
-                        mRecyclerView.setAdapter(projectsListAdapter);
-                        projectsListAdapter.setOnItemClickListener(ProjectsList.this);
-                        //mProgressCircle.setVisibility(View.INVISIBLE);
-                    }*/
-                    /*QuerySnapshot querySnapshot = task.getResult();
-                    if (querySnapshot != null) {
-                        while (querySnapshot.iterator().hasNext()) {
-                            Projet projet = querySnapshot.iterator().next().toObject(Projet.class);
-                            mProjects.add(projet);
-                            String itemId = querySnapshot.iterator().next().getId();
-                            projet.setKey(itemId);
-                        }
-                    }*/
-//////////////////////////////////////////
+                    projectsListAdapter.notifyDataSetChanged();
+
                 } else {
                     Log.d("tag", "Error getting documents: ", task.getException());
                 }
@@ -127,7 +103,9 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
         MenuNavigationActivity.openDrawer(drawerLayout);
     }
     public void ClickHome(View view){
-        MenuNavigationActivity.redirectActivity(this,Associations.class);
+        Intent intent = new Intent(getApplicationContext(), Associations.class);
+
+        startActivity(intent);
     }
     public void ClickProjet(View view) {
         //MenuNavigationActivity.redirectActivity(this, ProjectsList.class);
