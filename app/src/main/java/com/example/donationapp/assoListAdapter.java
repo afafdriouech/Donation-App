@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,11 +16,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.donationapp.models.Association;
 import com.example.donationapp.models.Projet;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class assoListAdapter extends RecyclerView.Adapter<assoListAdapter.AssoViewHolder> {
+
+    ImageButton fav_btn;
+    DatabaseReference favouriteRef;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    FirebaseFirestore fStore = FirebaseFirestore.getInstance();
 
     private Context mContext;
     private List<Association> mAssociation;
@@ -105,6 +114,8 @@ public class assoListAdapter extends RecyclerView.Adapter<assoListAdapter.AssoVi
             return false;
         }
     }
+
+
 
     public interface OnItemClickListener {
         void onItemClick(int position);

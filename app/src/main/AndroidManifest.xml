@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DonationApp">
+        <activity android:name=".addFavorite"></activity>
         <activity android:name=".RegisterDonater" />
         <activity android:name=".LoginDonater" />
         <activity android:name=".ProfilChoice" />

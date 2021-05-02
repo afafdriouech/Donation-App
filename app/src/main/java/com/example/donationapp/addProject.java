@@ -151,8 +151,7 @@ public class addProject extends AppCompatActivity {
                 });
 
             }
-        }
-        );
+        });
     }
 
 

@@ -71,14 +71,20 @@
 <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-            <ImageButton
-                android:background="@null"
-
-                android:layout_marginTop="45dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="fitEnd"
-                android:src="@drawable/ic_empty_heart" />
+    <Button
+        android:id="@+id/fav_item"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_gravity="end|center_horizontal"
+        android:gravity="center"
+        android:text="add"
+        android:textSize="22sp"
+        app:backgroundTint="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent" />
 </RelativeLayout>
         </LinearLayout>
 

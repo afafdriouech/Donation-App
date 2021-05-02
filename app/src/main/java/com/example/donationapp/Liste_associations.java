@@ -1,10 +1,14 @@
 package com.example.donationapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,12 +16,18 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.donationapp.models.Donater;
+import com.example.donationapp.models.Favorite;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.example.donationapp.models.Association;
 import com.example.donationapp.models.Projet;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -28,14 +38,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Liste_associations  extends Fragment  implements assoListAdapter.OnItemClickListener, Serializable {
+
+
+
     private View AssociationsView;
     private RecyclerView myAssociationsList;
-
     private assoListAdapter assoListAdapter;
-
     private List<Association> mAssociation;
     private FirebaseFirestore fStore;
     private FirebaseStorage mStorage;
+    FirebaseAuth fAuth;
+    String donaterID;
+
+    public TextView assoName;
+    ImageButton fav;
+
+    DatabaseReference databaseReference,favButtonRef,fav_list; //favbuttonRef is a reference to ckeck if heart button is clicked,and fav_list to stores fav item
+    Boolean favChecker = false;
+    Donater donater;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -71,9 +91,22 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
                 }
             }
         });
+
+
         return AssociationsView;
     }
 
+    //test button heart
+  /*  public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        donater = new Donater();
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        donaterID = fAuth.getCurrentUser().getUid();
+        CollectionReference collectionReferenceAsso=fStore.collection("associations");
+        CollectionReference collectionReferenceFav=fStore.collection("favourites");
+
+    }*/
     @Override
     public void onItemClick(int position) {
 
