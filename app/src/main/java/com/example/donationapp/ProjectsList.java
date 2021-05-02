@@ -19,6 +19,7 @@ import com.example.donationapp.models.Projet;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -43,6 +44,7 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
     private List<Projet> mProjects;
     private FirebaseFirestore fStore;
     private FirebaseStorage mStorage;
+    private FirebaseAuth fAuth;
     String assoID;
 
     @Override
@@ -50,6 +52,8 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects_list);
         drawerLayout = findViewById(R.id.drawer_layout);
+        //fAuth = FirebaseAuth.getInstance();
+        //String userId = fAuth.getCurrentUser().getUid();
 
         //handle add button
         AddBtn = findViewById(R.id.add);
@@ -75,6 +79,7 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
         projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
         mRecyclerView.setAdapter(projectsListAdapter);
         projectsListAdapter.setOnItemClickListener(ProjectsList.this);
+
 
         Task<QuerySnapshot> collectionReference=fStore.collection("projets").
                 whereEqualTo("idAsso",assoID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

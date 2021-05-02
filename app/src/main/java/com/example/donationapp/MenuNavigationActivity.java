@@ -79,7 +79,7 @@ public class MenuNavigationActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 FirebaseAuth.getInstance().signOut();
                 activity.finishAffinity();
-                redirectActivity(activity,LoginAsso.class);
+                redirectActivity(activity,ProfilChoice.class);
             }
         });
         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
