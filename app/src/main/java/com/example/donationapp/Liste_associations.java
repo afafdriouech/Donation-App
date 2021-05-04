@@ -58,14 +58,12 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
     public TextView assoName;
     ImageButton fav;
 
-    DatabaseReference databaseReference,favButtonRef,fav_list; //favbuttonRef is a reference to ckeck if heart button is clicked,and fav_list to stores fav item
-    Boolean favChecker = false;
     Donater donater;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         AssociationsView =  inflater.inflate(R.layout.activity_liste_associations,container,false);
-// get projects list from DB
+        // get associations list from DB
         fStore = FirebaseFirestore.getInstance();
         mStorage = FirebaseStorage.getInstance();
         myAssociationsList= (RecyclerView) AssociationsView.findViewById(R.id.asso_list);
@@ -97,49 +95,6 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
                 }
             }
         });
-        /*fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-        Name = AssociationsView.findViewById(R.id.assoName);
-        favAddBtn = AssociationsView.findViewById(R.id.fav_item);
-        favAddBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(),"Button was Clicked", Toast.LENGTH_SHORT).show();
-                final String assoname = Name.getText().toString();
-
-                //add data in firebase
-                idDonator = fAuth.getCurrentUser().getUid();
-                Favorite favorite = new Favorite( assoname, idDonator);
-                Log.d("TAG", "onSuccess: asso added favorites" + assoname + idDonator);
-                CollectionReference collectionReference = fStore.collection("favorites");
-                collectionReference.add(favorite).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d("TAG", "onSuccess: asso added favorites" + idDonator);
-                        //retrieveProjects(assoID);
-                        Intent intent = new Intent(getActivity().getApplicationContext(),ProjectsList.class);
-                        intent.putExtra("idDonator", idDonator);
-                        startActivity(intent);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("TAG", "Failed to create project");
-
-                        Intent intent = new Intent(getActivity().getApplicationContext(),ProjectsList.class);
-                        intent.putExtra("idDonator", idDonator);
-                        startActivity(intent);
-
-
-                    }
-                });
-                Toast.makeText(getActivity(), "Favorite added successful", Toast.LENGTH_LONG).show();
-
-            }
-        });*/
-
-
-        // submit button listener
 
         return AssociationsView;
     }
