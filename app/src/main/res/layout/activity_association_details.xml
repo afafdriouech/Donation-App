@@ -85,15 +85,21 @@
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:layout_marginTop="7dp"/>
+
                 <Button
                     android:id="@+id/fav_item"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="80dp"
-                    android:layout_gravity="end|center_horizontal"
+                    android:layout_width="250dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginBottom="20dp"
                     android:gravity="center"
-                    android:text="add"
-                    />
+                    android:text="Add to Favorites"
+                    android:textSize="22sp"
+                    app:backgroundTint="@color/design_default_color_error"
+
+                     />
 
 
 

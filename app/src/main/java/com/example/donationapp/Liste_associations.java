@@ -144,17 +144,6 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
         return AssociationsView;
     }
 
-    //test button heart
-  /*  public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        donater = new Donater();
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-        donaterID = fAuth.getCurrentUser().getUid();
-        CollectionReference collectionReferenceAsso=fStore.collection("associations");
-        CollectionReference collectionReferenceFav=fStore.collection("favourites");
-
-    }*/
     @Override
     public void onItemClick(int position) {
         Toast.makeText(getActivity(), "Normal click at position: " + position, Toast.LENGTH_SHORT).show();

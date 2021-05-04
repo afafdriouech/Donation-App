@@ -92,7 +92,7 @@ public class Association_details extends AppCompatActivity implements Serializab
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d("TAG", "onSuccess: asso added favorites" + idDonator);
                         //retrieveProjects(assoID);
-                        Intent intent = new Intent(getApplicationContext(),Association_details.class);
+                        Intent intent = new Intent(getApplicationContext(),Associations.class);
                         intent.putExtra("idDonator", idDonator);
                         startActivity(intent);
                     }
