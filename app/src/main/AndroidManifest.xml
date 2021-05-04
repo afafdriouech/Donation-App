@@ -10,8 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DonationApp">
-        <activity android:name=".addFavorite"></activity>
+        android:theme="@style/Theme.DonationApp"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Association_details"></activity>
+        <activity android:name=".addFavorite" />
         <activity android:name=".RegisterDonater" />
         <activity android:name=".LoginDonater" />
         <activity android:name=".ProfilChoice" />
@@ -19,15 +21,12 @@
         <activity android:name=".Liste_associations" />
         <activity android:name=".Recommendations" />
         <activity android:name=".ProjectsList" />
-        <activity android:name=".Liste_associations" />
-        <activity android:name=".Recommendations" />
         <activity android:name=".Favorites" />
         <activity android:name=".Fragment1" />
         <activity
             android:name=".Associations"
             android:label="@string/title_activity_associations"
             android:theme="@style/Theme.DonationApp.NoActionBar" />
-        <activity android:name=".ImageActivity" />
         <activity android:name=".Liste_donateurs" />
         <activity android:name=".TestMenuActivity" />
         <activity android:name=".Liste_appeldon" />

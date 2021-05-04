@@ -11,6 +11,8 @@ public class Association implements Serializable {
     public String email;
     public String password;
     public String phone;
+    public String description;
+
     public String key;
 
     public Association(String adresse,String assoName,String dateCreation,String email,String password,String phone){
@@ -22,6 +24,14 @@ public class Association implements Serializable {
         this.phone = phone;
     }
     public Association(){}
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;

@@ -6,19 +6,19 @@ public class Favorite implements Serializable {
 
 
 
-    private String NameAsso;
+    private String nameAsso;
     private String idDonater;
 
     public Favorite(String nameAsso, String idDonater) {
 
-        NameAsso = nameAsso;
+        this.nameAsso = nameAsso;
         this.idDonater = idDonater;
     }
     public Favorite(){}
 
 
     public void setNameAsso(String nameAsso) {
-        NameAsso = nameAsso;
+        nameAsso = nameAsso;
     }
 
     public void setIdDonater(String idDonater) {
@@ -28,7 +28,7 @@ public class Favorite implements Serializable {
 
 
     public String getNameAsso() {
-        return NameAsso;
+        return nameAsso;
     }
 
     public String getIdDonater() {
