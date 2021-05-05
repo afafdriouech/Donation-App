@@ -88,11 +88,11 @@ public class assoListAdapter extends RecyclerView.Adapter<assoListAdapter.AssoVi
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.setHeaderTitle("Select Action");
-            MenuItem update = menu.add(Menu.NONE, 1, 1, "Update");
-            MenuItem delete = menu.add(Menu.NONE, 2, 2, "Delete");
-            update.setOnMenuItemClickListener(this);
-            delete.setOnMenuItemClickListener(this);
+
+            MenuItem addfav = menu.add(Menu.NONE, 1, 1, "Add to favorites");
+
+            addfav.setOnMenuItemClickListener(this);
+
         }
 
         @Override
@@ -102,7 +102,7 @@ public class assoListAdapter extends RecyclerView.Adapter<assoListAdapter.AssoVi
                 if (position != RecyclerView.NO_POSITION) {
                     switch (item.getItemId()) {
                         case 1:
-                            mListener.onUpdateClick(position);
+                            mListener.addFavClick(position);
                             return true;
                         case 2:
                             mListener.onDeleteClick(position);
@@ -119,7 +119,7 @@ public class assoListAdapter extends RecyclerView.Adapter<assoListAdapter.AssoVi
 
     public interface OnItemClickListener {
         void onItemClick(int position);
-        void onUpdateClick(int position);
+        void addFavClick(int position);
         void onDeleteClick(int position);
     }
     public void setOnItemClickListener(OnItemClickListener listener) {

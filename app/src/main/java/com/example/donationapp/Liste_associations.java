@@ -110,9 +110,52 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
     }
 
     @Override
-    public void onUpdateClick(int position) {
+    public void addFavClick(int position) {
+        Association selectedItem = mAssociation.get(position);
+        final String assoTitle= selectedItem.getAssoName();
 
-    }
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
+        //handle the already connected user
+        if(fAuth.getCurrentUser() == null){
+            startActivity(new Intent(getActivity().getApplicationContext(),LoginDonater.class));
+            //finish();
+        }
+        
+                //add data in firebase
+                idDonator = fAuth.getCurrentUser().getUid();
+                Favorite favorite = new Favorite( assoTitle, idDonator);
+                Log.d("TAG", "onSuccess: asso added favorites" + assoTitle + idDonator);
+                CollectionReference collectionReference = fStore.collection("favorites");
+                collectionReference.add(favorite).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("TAG", "onSuccess: asso added favorites" + idDonator);
+                        //retrieveProjects(assoID);
+                         Intent intent = new Intent(getActivity().getApplicationContext(),Associations.class);
+                        intent.putExtra("idDonator", idDonator);
+                        startActivity(intent);
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("TAG", "Failed to create project");
+                        Toast.makeText(getActivity(), "Favorite added successful"+assoTitle, Toast.LENGTH_LONG).show();
+                        /*Intent intent = new Intent(getApplicationContext(),ProjectsList.class);
+                        intent.putExtra("idDonator", idDonator);
+                        startActivity(intent);*/
+
+
+                    }
+                });
+                //Toast.makeText(addFavorite.this, "Favorite added successful", Toast.LENGTH_LONG).show();
+
+            }
+
+
+
 
     @Override
     public void onDeleteClick(int position) {

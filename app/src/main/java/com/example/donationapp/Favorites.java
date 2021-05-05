@@ -40,7 +40,7 @@ public class Favorites extends Fragment  implements favListAdapter.OnItemClickLi
     FirebaseAuth fAuth;
     TextView Name;
 
-    String idDonator;
+    String donID;
     public TextView assoName;
     ImageButton fav;
 
@@ -48,6 +48,9 @@ public class Favorites extends Fragment  implements favListAdapter.OnItemClickLi
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FavView = inflater.inflate(R.layout.activity_favorites, container, false);
+        //get asso id
+        fAuth = FirebaseAuth.getInstance();
+        donID = fAuth.getCurrentUser().getUid();
         // get associations list from DB
         fStore = FirebaseFirestore.getInstance();
         mStorage = FirebaseStorage.getInstance();
@@ -59,7 +62,7 @@ public class Favorites extends Fragment  implements favListAdapter.OnItemClickLi
         myFavList.setAdapter(favListAdapter);
         favListAdapter.setOnItemClickListener(Favorites.this);
 
-        Task<QuerySnapshot> collectionReference = fStore.collection("favorites").
+        Task<QuerySnapshot> collectionReference = fStore.collection("favorites").whereEqualTo("idDonater",donID).
                 get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
