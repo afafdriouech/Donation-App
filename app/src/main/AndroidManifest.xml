@@ -10,10 +10,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
         android:theme="@style/Theme.DonationApp"
         android:usesCleartextTraffic="true">
         <activity android:name=".Association_details"></activity>
         <activity android:name=".addFavorite" />
+
+        android:theme="@style/Theme.DonationApp">
+        <activity android:name=".ThanksPage"></activity>
+        <activity android:name=".DonationForm" />
+        <activity android:name=".MenuNavigationActivityD" />
+        <activity android:name=".AllProjects" />
+
         <activity android:name=".RegisterDonater" />
         <activity android:name=".LoginDonater" />
         <activity android:name=".ProfilChoice" />

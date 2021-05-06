@@ -95,7 +95,7 @@ public class addProject extends AppCompatActivity {
 
         //handle the already connected user
         if(fAuth.getCurrentUser() == null){
-            startActivity(new Intent(getApplicationContext(),LoginAsso.class));
+            startActivity(new Intent(getApplicationContext(),ProfilChoice.class));
             finish();
         }
 

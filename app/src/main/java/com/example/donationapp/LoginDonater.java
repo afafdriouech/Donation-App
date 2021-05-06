@@ -73,7 +73,7 @@ public class LoginDonater extends AppCompatActivity {
                         if(task.isSuccessful()){
                             donaterID = fAuth.getCurrentUser().getUid();
                             Toast.makeText(LoginDonater.this, "signed in successfully",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(),Associations.class);
+                            Intent intent = new Intent(getApplicationContext(),AllProjects.class);
                             intent.putExtra("donaterID",donaterID);
                             startActivity(intent);
                         }
