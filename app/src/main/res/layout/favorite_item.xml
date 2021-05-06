@@ -23,6 +23,12 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+            <de.hdodenhof.circleimageview.CircleImageView
+
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:paddingRight="20dp"
+                android:src="@drawable/association"/>
             <TextView
                 android:id="@+id/favName"
                 android:layout_width="wrap_content"
@@ -32,6 +38,15 @@
                 android:layout_marginRight="10dp"
                 android:textColor="#460500"
                 android:textSize="30dp"/>
+            <TextView
+                android:id="@+id/idon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="#460500"
+                android:textSize="10dp"/>
 
 
             <ImageButton

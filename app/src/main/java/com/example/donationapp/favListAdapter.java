@@ -35,15 +35,16 @@ public class favListAdapter extends RecyclerView.Adapter<favListAdapter.FavViewH
 
     @NonNull
     @Override
-    public favListAdapter.FavViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FavViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.favorite_item, parent, false);
-        return new favListAdapter.FavViewHolder(v);
+        return new FavViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull favListAdapter.FavViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FavViewHolder holder, int position) {
         Favorite favCurrent = mFavorite.get(position);
-        holder.assoName.setText("Name: "+favCurrent.getNameAsso());
+        holder.nameAsso.setText("Name:"+favCurrent.getNameAsso());
+        holder.idDonator.setText("id"+favCurrent.getIdDonater());
 
 
     }
@@ -54,12 +55,13 @@ public class favListAdapter extends RecyclerView.Adapter<favListAdapter.FavViewH
     }
 
     public class FavViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener{
-        public TextView assoName;
+        public TextView nameAsso,idDonator;
 
         public FavViewHolder(View itemView) {
             super(itemView);
 
-            assoName= itemView.findViewById(R.id.favName);
+            nameAsso= itemView.findViewById(R.id.favName);
+            idDonator = itemView.findViewById(R.id.idon);
             itemView.setOnClickListener(this);
             itemView.setOnCreateContextMenuListener(this);
         }
@@ -76,29 +78,12 @@ public class favListAdapter extends RecyclerView.Adapter<favListAdapter.FavViewH
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.setHeaderTitle("Select Action");
-            MenuItem update = menu.add(Menu.NONE, 1, 1, "Update");
-            MenuItem delete = menu.add(Menu.NONE, 2, 2, "Delete");
-            update.setOnMenuItemClickListener(this);
-            delete.setOnMenuItemClickListener(this);
+
         }
 
         @Override
         public boolean onMenuItemClick(MenuItem item) {
-            if (mListener != null) {
-                int position = getAdapterPosition();
-                if (position != RecyclerView.NO_POSITION) {
-                    switch (item.getItemId()) {
-                        case 1:
-                            mListener.onUpdateClick(position);
-                            return true;
-                        case 2:
-                            mListener.onDeleteClick(position);
-                            //notifyDataSetChanged();
-                            return true;
-                    }
-                }
-            }
+
             return false;
         }
     }
@@ -107,10 +92,9 @@ public class favListAdapter extends RecyclerView.Adapter<favListAdapter.FavViewH
 
     public interface OnItemClickListener {
         void onItemClick(int position);
-        void onUpdateClick(int position);
-        void onDeleteClick(int position);
+
     }
-    public void setOnItemClickListener(favListAdapter.OnItemClickListener listener) {
+    public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
 }

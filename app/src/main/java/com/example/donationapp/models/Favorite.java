@@ -19,7 +19,13 @@ public class Favorite implements Serializable {
     }
     public Favorite(){}
 
+    public String getNameAsso() {
+        return nameAsso;
+    }
 
+    public String getIdDonater() {
+        return idDonater;
+    }
     public void setNameAsso(String nameAsso) {
         nameAsso = nameAsso;
     }
@@ -30,13 +36,7 @@ public class Favorite implements Serializable {
 
 
 
-    public String getNameAsso() {
-        return nameAsso;
-    }
 
-    public String getIdDonater() {
-        return idDonater;
-    }
     @Exclude
     public String getKey() {
         return key;

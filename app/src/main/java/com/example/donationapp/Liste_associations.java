@@ -32,7 +32,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -68,7 +70,7 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
         mStorage = FirebaseStorage.getInstance();
         myAssociationsList= (RecyclerView) AssociationsView.findViewById(R.id.asso_list);
         myAssociationsList.setLayoutManager(new LinearLayoutManager(getContext()));
-        //mProgressCircle = findViewById(R.id.progress_circle);
+       
         mAssociation = new ArrayList<>();
         assoListAdapter = new assoListAdapter(getActivity(), mAssociation);
         myAssociationsList.setAdapter(assoListAdapter);
@@ -122,17 +124,16 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
             startActivity(new Intent(getActivity().getApplicationContext(),LoginDonater.class));
             //finish();
         }
-        
+
                 //add data in firebase
                 idDonator = fAuth.getCurrentUser().getUid();
                 Favorite favorite = new Favorite( assoTitle, idDonator);
-                Log.d("TAG", "onSuccess: asso added favorites" + assoTitle + idDonator);
                 CollectionReference collectionReference = fStore.collection("favorites");
                 collectionReference.add(favorite).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("TAG", "onSuccess: asso added favorites" + idDonator);
-                        //retrieveProjects(assoID);
+                        Log.d("TAG", "onSuccess: asso added favorites"+ assoTitle + idDonator);
+
                          Intent intent = new Intent(getActivity().getApplicationContext(),Associations.class);
                         intent.putExtra("idDonator", idDonator);
                         startActivity(intent);
@@ -143,9 +144,7 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
                     public void onFailure(@NonNull Exception e) {
                         Log.d("TAG", "Failed to create project");
                         Toast.makeText(getActivity(), "Favorite added successful"+assoTitle, Toast.LENGTH_LONG).show();
-                        /*Intent intent = new Intent(getApplicationContext(),ProjectsList.class);
-                        intent.putExtra("idDonator", idDonator);
-                        startActivity(intent);*/
+
 
 
                     }

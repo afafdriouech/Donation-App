@@ -42,13 +42,13 @@ public class Favorites extends Fragment  implements favListAdapter.OnItemClickLi
 
     String donID;
     public TextView assoName;
-    ImageButton fav;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FavView = inflater.inflate(R.layout.activity_favorites, container, false);
-        //get asso id
+        //get donater id
         fAuth = FirebaseAuth.getInstance();
         donID = fAuth.getCurrentUser().getUid();
         // get associations list from DB
@@ -56,7 +56,7 @@ public class Favorites extends Fragment  implements favListAdapter.OnItemClickLi
         mStorage = FirebaseStorage.getInstance();
         myFavList = (RecyclerView) FavView.findViewById(R.id.fav_list);
         myFavList.setLayoutManager(new LinearLayoutManager(getContext()));
-        //mProgressCircle = findViewById(R.id.progress_circle);
+
         mFavorite = new ArrayList<>();
         favListAdapter = new favListAdapter(getActivity(), mFavorite);
         myFavList.setAdapter(favListAdapter);
@@ -89,21 +89,9 @@ public class Favorites extends Fragment  implements favListAdapter.OnItemClickLi
 
     @Override
     public void onItemClick(int position) {
-        /*Toast.makeText(getActivity(), "Normal click at position: " + position, Toast.LENGTH_SHORT).show();
-        Favorite selectedItem = mFavorite.get(position);
-        Intent intent = new Intent(getActivity(), Association_details.class);
-        intent.putExtra("FavoriteClass", (Serializable) selectedItem);
-        startActivity(intent);*/
+        
 
     }
 
-    @Override
-    public void onUpdateClick(int position) {
 
-    }
-
-    @Override
-    public void onDeleteClick(int position) {
-
-    }
 }
