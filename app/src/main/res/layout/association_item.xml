@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="35dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <de.hdodenhof.circleimageview.CircleImageView
+
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:paddingRight="20dp"
+                android:src="@drawable/association"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp">
+                <TextView
+                    android:id="@+id/assoName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cindh"
+                    android:layout_marginRight="10dp"
+                    android:textColor="#460500"
+                    android:textSize="30dp"/>
+                <TextView
+                    android:id="@+id/assoemail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email: cindh@gmail.com"
+                    android:textColor="#393836"
+                    android:textSize="14dp"/>
+                <TextView
+                    android:id="@+id/assophone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="tel :0617292929"
+                    android:textColor="#393836"
+                    android:textSize="14dp"/>
+
+
+                <TextView
+                    android:id="@+id/assodateCreation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date de création"
+                    android:textColor="#393836"
+                    android:textSize="14dp"/>
+                <TextView
+                    android:id="@+id/assoadresse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adresse"
+                    android:textColor="#393836"
+                    android:textSize="14dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

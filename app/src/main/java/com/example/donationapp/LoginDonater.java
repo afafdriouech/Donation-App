@@ -66,6 +66,7 @@ public class LoginDonater extends AppCompatActivity {
 
                 //donater authentificatiom
 
+
                 fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

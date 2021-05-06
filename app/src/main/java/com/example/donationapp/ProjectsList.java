@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.donationapp.R;
+import com.example.donationapp.models.Association;
 import com.example.donationapp.models.Projet;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -93,6 +94,11 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
                         p.setKey(itemId);
                         //Log.d("TAG", itemId + " => " + document.getData());
                     }
+
+
+                    projectsListAdapter.notifyDataSetChanged();
+
+
                    // projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
                     //mRecyclerView.setAdapter(projectsListAdapter);
                     //mProgressCircle.setVisibility(View.INVISIBLE);
@@ -119,7 +125,7 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
                             projet.setKey(itemId);
                         }
                     }*/
-//////////////////////////////////////////
+
                 } else {
                     Log.d("tag", "Error getting documents: ", task.getException());
                 }
@@ -132,7 +138,9 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
         MenuNavigationActivity.openDrawer(drawerLayout);
     }
     public void ClickHome(View view){
-        MenuNavigationActivity.redirectActivity(this,Associations.class);
+        Intent intent = new Intent(getApplicationContext(), Associations.class);
+
+        startActivity(intent);
     }
     public void ClickProjet(View view) {
         //MenuNavigationActivity.redirectActivity(this, ProjectsList.class);
