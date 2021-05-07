@@ -106,12 +106,52 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Share your opinion with us!"
+            android:textSize="25dp"
+            android:textColor="#700817"
+            android:layout_marginTop="600dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:layout_marginTop="630dp">
 
+        <EditText
+            android:id="@+id/comreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_marginLeft="30dp"
+            android:hint="Comment here..."
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.144" />
+            <Button
+                android:id="@+id/com_btn"
 
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="Add"
+                android:textSize="12dp"
+                app:backgroundTint="#009688"
+
+                />
+
+        </LinearLayout>
     </RelativeLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/comment_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

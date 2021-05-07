@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.donationapp.models.Association;
+import com.example.donationapp.models.Comment;
 import com.example.donationapp.models.Favorite;
 import com.example.donationapp.models.Projet;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -40,6 +42,8 @@ public class Association_details extends AppCompatActivity implements Serializab
     public TextView email;
     public TextView password;
     public TextView phone;
+    EditText review;
+    Button comAddBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +73,10 @@ public class Association_details extends AppCompatActivity implements Serializab
         fStore = FirebaseFirestore.getInstance();
 
         favAddBtn = findViewById(R.id.fav_item);
+        //test comment
+
+        review = findViewById(R.id.comreview);
+        comAddBtn = findViewById(R.id.com_btn);
         //handle the already connected user
         if(fAuth.getCurrentUser() == null){
             startActivity(new Intent(getApplicationContext(),LoginDonater.class));
@@ -92,7 +100,45 @@ public class Association_details extends AppCompatActivity implements Serializab
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d("TAG", "onSuccess: asso added favorites" + idDonator);
                         //retrieveProjects(assoID);
-                        Intent intent = new Intent(getApplicationContext(),Associations.class);
+                        Intent intent = new Intent(getApplicationContext(),Association_details.class);
+                        intent.putExtra("idDonator", idDonator);
+                        startActivity(intent);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("TAG", "Failed to create project");
+
+                        Intent intent = new Intent(getApplicationContext(),ProjectsList.class);
+                        intent.putExtra("idDonator", idDonator);
+                        startActivity(intent);
+
+
+                    }
+                });
+                Toast.makeText(Association_details.this, "Favorite added successful", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        //test
+        comAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final String assoname =assoName.getText().toString();
+                final String assoReview =review.getText().toString();
+                //add data in firebase
+                idDonator = fAuth.getCurrentUser().getUid();
+                Comment comment = new Comment( assoname, idDonator,assoReview);
+                Log.d("TAG", "onSuccess: Comment  added to db" + assoname + idDonator);
+                CollectionReference collectionReference = fStore.collection("comments");
+                collectionReference.add(comment).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("TAG", "onSuccess: asso added favorites" + idDonator);
+                        //retrieveProjects(assoID);
+                        Intent intent = new Intent(getApplicationContext(),Association_details.class);
                         intent.putExtra("idDonator", idDonator);
                         startActivity(intent);
                     }

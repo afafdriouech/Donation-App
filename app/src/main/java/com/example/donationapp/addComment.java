@@ -29,7 +29,8 @@ import com.google.firebase.storage.UploadTask;
 
 public class addComment extends AppCompatActivity {
 
-    TextView Assoname, review;
+    TextView Name;
+    EditText review;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String idDonator;
@@ -42,9 +43,9 @@ public class addComment extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        Assoname = findViewById(R.id.comAsso);
-        review = findViewById(R.id.review);
-        comAddBtn = findViewById(R.id.com_item);
+        Name = findViewById(R.id.assotitle);
+        review = findViewById(R.id.comreview);
+        comAddBtn = findViewById(R.id.com_btn);
         //handle the already connected user
         if(fAuth.getCurrentUser() == null){
             startActivity(new Intent(getApplicationContext(),LoginDonater.class));
@@ -56,7 +57,7 @@ public class addComment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String assoname =Assoname.getText().toString();
+                String assoname =Name.getText().toString();
                 String assoReview =review.getText().toString();
                 //add data in firebase
                 idDonator = fAuth.getCurrentUser().getUid();
