@@ -46,7 +46,6 @@ public class favListAdapter extends RecyclerView.Adapter<favListAdapter.FavViewH
         holder.nameAsso.setText("Name:"+favCurrent.getNameAsso());
         holder.idDonator.setText("id"+favCurrent.getIdDonater());
 
-
     }
 
     @Override

@@ -26,15 +26,14 @@ public class Favorite implements Serializable {
     public String getIdDonater() {
         return idDonater;
     }
+
     public void setNameAsso(String nameAsso) {
-        nameAsso = nameAsso;
+        this.nameAsso = nameAsso;
     }
 
     public void setIdDonater(String idDonater) {
         this.idDonater = idDonater;
     }
-
-
 
 
     @Exclude

@@ -30,7 +30,6 @@
         <activity android:name=".Recommendations" />
         <activity android:name=".ProjectsList" />
         <activity android:name=".Favorites" />
-        <activity android:name=".Fragment1" />
         <activity
             android:name=".Associations"
             android:label="@string/title_activity_associations"
