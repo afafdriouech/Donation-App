@@ -70,7 +70,7 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
         mStorage = FirebaseStorage.getInstance();
         myAssociationsList= (RecyclerView) AssociationsView.findViewById(R.id.asso_list);
         myAssociationsList.setLayoutManager(new LinearLayoutManager(getContext()));
-       
+
         mAssociation = new ArrayList<>();
         assoListAdapter = new assoListAdapter(getActivity(), mAssociation);
         myAssociationsList.setAdapter(assoListAdapter);
@@ -153,7 +153,27 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
 
             }
 
-
+    ///test duplication
+   /* FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+    Task<QuerySnapshot> taskRef  = fStore.collection("favorites").whereEqualTo("idDonater", idDonator).
+            get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        @Override
+        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+            if (task.isSuccessful()) {
+                for (DocumentSnapshot document : task.getResult()) {
+                    if (document.exists()) {
+                        Log.d("TAG", "name already exists");
+                        Toast.makeText(getActivity(), "name already existssssssssssss", Toast.LENGTH_LONG).show();
+                    } else {
+                        Log.d("TAG", "newwwww name");
+                        Toast.makeText(getActivity(), "newwwww name", Toast.LENGTH_LONG).show();
+                    }
+                }
+            } else {
+                Log.d("TAG", "Error getting documents: ", task.getException());
+            }
+        }
+    });*/
 
 
     @Override
