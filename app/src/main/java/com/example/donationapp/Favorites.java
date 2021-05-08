@@ -36,7 +36,6 @@ public class Favorites extends Fragment  implements favListAdapter.OnItemClickLi
     private favListAdapter favListAdapter;
     private List<Favorite> mFavorite;
     private FirebaseFirestore fStore;
-    private FirebaseStorage mStorage;
     FirebaseAuth fAuth;
     TextView Name;
 
@@ -53,7 +52,6 @@ public class Favorites extends Fragment  implements favListAdapter.OnItemClickLi
         donID = fAuth.getCurrentUser().getUid();
         // get associations list from DB
         fStore = FirebaseFirestore.getInstance();
-        mStorage = FirebaseStorage.getInstance();
         myFavList = (RecyclerView) FavView.findViewById(R.id.fav_list);
         myFavList.setLayoutManager(new LinearLayoutManager(getContext()));
 

@@ -28,8 +28,6 @@ import com.example.donationapp.models.Projet;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -134,7 +132,7 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d("TAG", "onSuccess: asso added favorites"+ assoTitle + idDonator);
 
-                         Intent intent = new Intent(getActivity().getApplicationContext(),Associations.class);
+                        Intent intent = new Intent(getActivity().getApplicationContext(),Associations.class);
                         intent.putExtra("idDonator", idDonator);
                         startActivity(intent);
 
@@ -152,6 +150,7 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
                 //Toast.makeText(addFavorite.this, "Favorite added successful", Toast.LENGTH_LONG).show();
 
             }
+
 
     ///test duplication
    /* FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
@@ -174,6 +173,8 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
             }
         }
     });*/
+
+
 
 
     @Override

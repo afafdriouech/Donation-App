@@ -26,6 +26,7 @@ public class Favorite implements Serializable {
     public String getIdDonater() {
         return idDonater;
     }
+
     public void setNameAsso(String nameAsso) {
         this.nameAsso = nameAsso;
     }
@@ -33,8 +34,6 @@ public class Favorite implements Serializable {
     public void setIdDonater(String idDonater) {
         this.idDonater = idDonater;
     }
-
-
 
 
     @Exclude
