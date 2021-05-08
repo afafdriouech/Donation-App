@@ -63,6 +63,7 @@ public class DonationForm extends AppCompatActivity {
                 final String cardDate = mCardDate.getText().toString();
                 final String cvc = mCVC.getText().toString();
                 final String cardName = mCardName.getText().toString();
+                
                 //get IDs
                 donaterId = fAuth.getCurrentUser().getUid();
                 Intent intent = getIntent();
