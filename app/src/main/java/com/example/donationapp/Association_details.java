@@ -2,30 +2,40 @@ package com.example.donationapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.donationapp.models.Association;
+import com.example.donationapp.models.Comment;
 import com.example.donationapp.models.Favorite;
 import com.example.donationapp.models.Projet;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Association_details extends AppCompatActivity implements Serializable {
+public class Association_details extends AppCompatActivity implements commentListAdapter.OnItemClickListener,Serializable {
 
     TextView Name;
     Button favAddBtn;
@@ -40,6 +50,12 @@ public class Association_details extends AppCompatActivity implements Serializab
     public TextView email;
     public TextView password;
     public TextView phone;
+    EditText review;
+    Button comAddBtn;
+
+    private RecyclerView commentList;
+    private commentListAdapter commentListAdapter;
+    private List<Comment> mComment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +85,10 @@ public class Association_details extends AppCompatActivity implements Serializab
         fStore = FirebaseFirestore.getInstance();
 
         favAddBtn = findViewById(R.id.fav_item);
+        //test comment
+
+        review = findViewById(R.id.comreview);
+        comAddBtn = findViewById(R.id.com_btn);
         //handle the already connected user
         if(fAuth.getCurrentUser() == null){
             startActivity(new Intent(getApplicationContext(),LoginDonater.class));
@@ -92,9 +112,7 @@ public class Association_details extends AppCompatActivity implements Serializab
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d("TAG", "onSuccess: asso added favorites" + idDonator);
                         //retrieveProjects(assoID);
-                        Intent intent = new Intent(getApplicationContext(),Associations.class);
-                        intent.putExtra("idDonator", idDonator);
-                        startActivity(intent);
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -113,6 +131,75 @@ public class Association_details extends AppCompatActivity implements Serializab
             }
         });
 
+        //ajouter les commentaires
+        comAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final String assoname =assoName.getText().toString();
+                final String assoReview =review.getText().toString();
+                //add data in firebase
+                idDonator = fAuth.getCurrentUser().getUid();
+                Comment comment = new Comment( assoname, idDonator,assoReview);
+                Log.d("TAG", "onSuccess: Comment  added to db" + assoname + idDonator);
+                CollectionReference collectionReference = fStore.collection("comments");
+                collectionReference.add(comment).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("TAG", "onSuccess: comment added" + idDonator);
+                        //retrieveProjects(assoID);
+
+                        startActivity(getIntent());
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("TAG", "Failed to add comment");
+
+
+
+
+                    }
+                });
+                Toast.makeText(Association_details.this, "Favorite added successful", Toast.LENGTH_LONG).show();
+
+            }
+        });
+        // gérer l'affichage des commentaires
+        commentList =findViewById(R.id.comment_list);
+        commentList.setLayoutManager(new LinearLayoutManager(this));
+
+        mComment = new ArrayList<>();
+        commentListAdapter = new commentListAdapter(Association_details.this, mComment);
+        commentList.setAdapter(commentListAdapter);
+        commentListAdapter.setOnItemClickListener(Association_details.this);
+        String assoname = assoName.getText().toString();
+        Task<QuerySnapshot> collectionReference=fStore.collection("comments").
+                whereEqualTo("nameAsso",assoname).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Comment c = document.toObject(Comment.class);
+                        mComment.add(c);
+                        String itemId = document.getId();
+                        c.setKey(itemId);
+                        //Log.d("TAG", itemId + " => " + document.getData());
+                    }
+
+
+                    commentListAdapter.notifyDataSetChanged();
+                } else {
+                    Log.d("tag", "Error getting documents: ", task.getException());
+                }
+                commentListAdapter.notifyDataSetChanged();
+            }
+        });
+
     }
 
+    @Override
+    public void onItemClick(int position) {
+
+    }
 }

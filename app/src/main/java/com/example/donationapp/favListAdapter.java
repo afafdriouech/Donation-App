@@ -43,8 +43,8 @@ public class favListAdapter extends RecyclerView.Adapter<favListAdapter.FavViewH
     @Override
     public void onBindViewHolder(@NonNull FavViewHolder holder, int position) {
         Favorite favCurrent = mFavorite.get(position);
-        holder.nameAsso.setText("Name:"+favCurrent.getNameAsso());
-        holder.idDonator.setText("id"+favCurrent.getIdDonater());
+        holder.nameAsso.setText(favCurrent.getNameAsso());
+        //holder.idDonator.setText("id"+favCurrent.getIdDonater());
 
     }
 
@@ -60,7 +60,7 @@ public class favListAdapter extends RecyclerView.Adapter<favListAdapter.FavViewH
             super(itemView);
 
             nameAsso= itemView.findViewById(R.id.favName);
-            idDonator = itemView.findViewById(R.id.idon);
+            //idDonator = itemView.findViewById(R.id.idon);
             itemView.setOnClickListener(this);
             itemView.setOnCreateContextMenuListener(this);
         }
