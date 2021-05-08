@@ -131,7 +131,7 @@ public class Association_details extends AppCompatActivity implements commentLis
             }
         });
 
-        //test
+        //ajouter les commentaires
         comAddBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,20 +146,17 @@ public class Association_details extends AppCompatActivity implements commentLis
                 collectionReference.add(comment).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("TAG", "onSuccess: asso added favorites" + idDonator);
+                        Log.d("TAG", "onSuccess: comment added" + idDonator);
                         //retrieveProjects(assoID);
-                        Intent intent = new Intent(getApplicationContext(),Association_details.class);
-                        intent.putExtra("idDonator", idDonator);
-                        startActivity(intent);
+
+                        startActivity(getIntent());
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.d("TAG", "Failed to create project");
+                        Log.d("TAG", "Failed to add comment");
 
-                        Intent intent = new Intent(getApplicationContext(),ProjectsList.class);
-                        intent.putExtra("idDonator", idDonator);
-                        startActivity(intent);
+
 
 
                     }

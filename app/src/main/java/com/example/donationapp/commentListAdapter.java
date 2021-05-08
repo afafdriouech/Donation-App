@@ -51,7 +51,7 @@ public class commentListAdapter extends RecyclerView.Adapter<commentListAdapter.
             super(itemView);
 
             nameAsso = itemView.findViewById(R.id.favName);
-            idDonator = itemView.findViewById(R.id.idon);
+
             review = itemView.findViewById(R.id.review);
             itemView.setOnClickListener(this);
             itemView.setOnCreateContextMenuListener(this);
