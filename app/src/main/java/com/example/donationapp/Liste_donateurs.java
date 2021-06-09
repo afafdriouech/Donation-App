@@ -33,7 +33,7 @@ public class Liste_donateurs extends AppCompatActivity {
         MenuNavigationActivity.redirectActivity(this,Liste_appeldon.class);
     }
     public void ClickDonCalled(View view){
-        MenuNavigationActivity.redirectActivity(this,TestMenuActivity.class);
+        MenuNavigationActivity.redirectActivity(this,DonationCalled.class);
     }
     public void ClickDonators(View view){
         MenuNavigationActivity.redirectActivity(this,Liste_donateurs.class);

@@ -128,7 +128,10 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
         MenuNavigationActivity.redirectActivity(this, Liste_appeldon.class);
     }
     public void ClickDonCalled(View view) {
-        MenuNavigationActivity.redirectActivity(this, TestMenuActivity.class);
+
+        Intent intent = new Intent(getApplicationContext(),DonationCalled.class);
+        intent.putExtra("assoID",assoID);
+        startActivity(intent);
     }
     public void ClickDonators(View view){
         MenuNavigationActivity.redirectActivity(this,Liste_donateurs.class);

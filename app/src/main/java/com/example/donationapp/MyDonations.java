@@ -58,52 +58,52 @@ public class MyDonations extends AppCompatActivity {
         // donation amount and currency from donations
         Task<QuerySnapshot> collectionReference = fStore.collection("Donations").whereEqualTo("donaterId",donaterId)
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
 
-                        Mydonation donation= new Mydonation();
+                                Mydonation donation= new Mydonation();
 
-                        donationAmount = document.get("donationAmount").toString();
-                        currency = document.get("currency").toString();
-                        projectId = document.get("projectId").toString();
+                                donationAmount = document.get("donationAmount").toString();
+                                currency = document.get("currency").toString();
+                                projectId = document.get("projectId").toString();
 
-                        donation.setAmount(donationAmount);
-                        donation.setCurrency(currency);
+                                donation.setAmount(donationAmount);
+                                donation.setCurrency(currency);
 
-                        // project title from projets
-                        Task<DocumentSnapshot> subCollection = fStore.collection("projets").document(projectId).get()
-                                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        String assoId= task.getResult().get("idAsso").toString();
-                                        titre = task.getResult().get("titre").toString();
-                                        donation.setProject(titre);
-                                        // association name from association
-                                        Task<DocumentSnapshot> subCollection = fStore.collection("associations").document(assoId).get()
-                                                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                        String assoName = task.getResult().get("assoName").toString();
-                                                        donation.setAssociation(assoName);
-                                                        Log.d("TAG", donation.getProject()+ " "+donation.getAmount()+ " "+donation.getAssociation());
-                                                        mDonations.add(donation);
-                                                        myDonationsAdapter.notifyDataSetChanged();
-                                                    }
-                                                });
-                                    }
-                                });
-                        //Log.d("TAG", donation.getProject()+ " "+donation.getAmount()+ " "+donation.getAssociation());
-                        //Log.d("TAG", donation.getAmount() + " " + donation.getProject());
-                        //myDonationsAdapter.notifyDataSetChanged();
+                                // project title from projets
+                                Task<DocumentSnapshot> subCollection = fStore.collection("projets").document(projectId).get()
+                                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                String assoId= task.getResult().get("idAsso").toString();
+                                                titre = task.getResult().get("titre").toString();
+                                                donation.setProject(titre);
+                                                // association name from association
+                                                Task<DocumentSnapshot> subCollection = fStore.collection("associations").document(assoId).get()
+                                                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                                String assoName = task.getResult().get("assoName").toString();
+                                                                donation.setAssociation(assoName);
+                                                                Log.d("TAG", donation.getProject()+ " "+donation.getAmount()+ " "+donation.getAssociation());
+                                                                mDonations.add(donation);
+                                                                myDonationsAdapter.notifyDataSetChanged();
+                                                            }
+                                                        });
+                                            }
+                                        });
+                                //Log.d("TAG", donation.getProject()+ " "+donation.getAmount()+ " "+donation.getAssociation());
+                                //Log.d("TAG", donation.getAmount() + " " + donation.getProject());
+                                //myDonationsAdapter.notifyDataSetChanged();
+                            }
+                        } else {
+                            Log.d("tag", "Error getting documents: ", task.getException());
+                        }
+                        // myDonationsAdapter.notifyDataSetChanged();
                     }
-                } else {
-                    Log.d("tag", "Error getting documents: ", task.getException());
-                }
-               // myDonationsAdapter.notifyDataSetChanged();
-            }
-        });
+                });
     }
 
     public void ClickMenu(View view) {
