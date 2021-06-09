@@ -2,6 +2,7 @@ package com.example.donationapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -82,6 +83,12 @@ public class Liste_donateurs extends AppCompatActivity {
     }
     public void ClickMenu(View view) {
         MenuNavigationActivity.openDrawer(drawerLayout);
+    }
+    public static void closeDrawer(DrawerLayout drawerLayout) {
+        // Fermer le drawer layout
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
     }
     public void ClickHome(View view){
         Intent intent = new Intent(getApplicationContext(), Associations.class);

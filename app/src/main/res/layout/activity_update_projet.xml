@@ -173,7 +173,7 @@
             android:layout_height="60dp"
             android:layout_gravity="end|center_horizontal"
             android:gravity="center"
-            android:text="Ajouter"
+            android:text="Update"
             android:textSize="22sp"
             app:backgroundTint="@color/teal_700"
             app:layout_constraintBottom_toBottomOf="parent"

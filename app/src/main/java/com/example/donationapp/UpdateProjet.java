@@ -22,7 +22,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class UpdateProjet extends AppCompatActivity {
-    EditText mTitre,mDateLancement,mDureeRealisation,mDateEcheance,mBudget,mlieu,mAvancement,mDescription,midAsso,mImage;
+    EditText mTitre,mDateLancement,mDureeRealisation,mDateEcheance,mBudget,mlieu,mAvancement,mDescription,midAsso;
+    String mImage,mImageUrl;
 
     Button UpdBtn;
     FirebaseAuth fAuth;
@@ -63,7 +64,10 @@ public class UpdateProjet extends AppCompatActivity {
         mlieu.setText(selecteditem.getLieu()  );
         mDescription.setText(selecteditem.getDescription() );
         midAsso.setText(selecteditem.getIdAsso() );
-        mImage = findViewById(R.id.image);
+        mImage = selecteditem.getImage();
+        mImageUrl = selecteditem.getImageUrl();
+
+
 
         // submit button listener
         UpdBtn.setOnClickListener(new View.OnClickListener() {
@@ -79,10 +83,11 @@ public class UpdateProjet extends AppCompatActivity {
 
                 final String idAsso = midAsso.getText().toString();
 
+
                 //update data in firebase
                 final String selectedKey = selecteditem.getKey();
                 fStore = FirebaseFirestore.getInstance();
-                Projet projetselected= new Projet(Titre, DateLancement, DureeRealisation, DateEcheance, Budget,  lieu,   Description, idAsso);
+                Projet projetselected= new Projet(Titre, DateLancement, DureeRealisation, DateEcheance, Budget,  lieu,   Description,mImage,mImageUrl, idAsso);
                 fStore.collection("projets").document(selectedKey)
                         .set(projetselected)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {

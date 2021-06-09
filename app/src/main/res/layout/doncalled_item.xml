@@ -38,14 +38,15 @@
                     android:text="Project:"
                     android:layout_marginRight="10dp"
                     android:textColor="#009688"
-                    android:textSize="30dp"/>
+                    android:textSize="28dp"/>
                 <TextView
                     android:id="@+id/idproj"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
                     android:textColor="#5D575E"
-                    android:textSize="17dp"/>
+                    android:textSize="15dp"/>
             </LinearLayout>
 
 
