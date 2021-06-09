@@ -36,7 +36,7 @@ public class doncalledAdapter extends RecyclerView.Adapter<doncalledAdapter.DonV
     public void onBindViewHolder(@NonNull DonViewHolder holder, int position) {
         Donation donCurrent = mDonations.get(position);
         holder.idprojet.setText(donCurrent.getDonaterId());
-        holder.amount.setText("+"+donCurrent.getDonationAmount());
+        holder.amount.setText("+ "+donCurrent.getDonationAmount()+" dh");
 
 
     }

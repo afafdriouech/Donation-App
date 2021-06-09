@@ -1,5 +1,7 @@
 package com.example.donationapp.models;
 
+import com.google.firebase.firestore.Exclude;
+
 public class Donater {
 
     private String FullName;
@@ -7,7 +9,8 @@ public class Donater {
     private String Password;
     private String Address;
     private String Phone;
-
+    @Exclude
+    public String key;
     public Donater(String fullName, String email, String password, String address, String phone) {
         FullName = fullName;
         Email = email;
@@ -55,5 +58,13 @@ public class Donater {
 
     public void setPhone(String phone) {
         Phone = phone;
+    }
+    @Exclude
+    public String getKey() {
+        return key;
+    }
+    @Exclude
+    public void setKey(String key){
+        this.key = key;
     }
 }
