@@ -171,6 +171,9 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
                 //projectsListAdapter.notifyDataSetChanged();
                 projectsListAdapter.notifyItemChanged(position);
                 Toast.makeText(ProjectsList.this, "Item deleted", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(),ProjectsList.class);
+                intent.putExtra("assoID",assoID);
+                startActivity(intent);
             }
         });
     }
