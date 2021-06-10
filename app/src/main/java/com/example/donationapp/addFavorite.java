@@ -59,8 +59,8 @@ public class addFavorite extends AppCompatActivity {
 
                     //add data in firebase
                     idDonator = fAuth.getCurrentUser().getUid();
-                    Favorite favorite = new Favorite( assoname, idDonator);
-                Log.d("TAG", "onSuccess: asso added favorites" + assoname + idDonator);
+                    Favorite favorite = new Favorite( assoname, idDonator, null);
+                    Log.d("TAG", "onSuccess: asso added favorites" + assoname + idDonator);
                     CollectionReference collectionReference = fStore.collection("favorites");
                     collectionReference.add(favorite).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override

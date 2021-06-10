@@ -26,7 +26,6 @@ public class AllProjectsAdapter extends RecyclerView.Adapter<AllProjectsAdapter.
     private OnItemClickListenerD mListener;
     Button mDonate;
 
-
     public AllProjectsAdapter(Context mContext, List<Projet> mProjects) {
         this.mContext = mContext;
         this.mProjects = mProjects;

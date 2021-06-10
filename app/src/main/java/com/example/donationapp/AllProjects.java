@@ -45,7 +45,6 @@ public class AllProjects extends AppCompatActivity implements AllProjectsAdapter
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //mProgressCircle = findViewById(R.id.progress_circle);
         mProjects = new ArrayList<>();
-        //////////////////////////////////////////////////////attentioooooooooooooooooon 2 instanciations!!!!! to check!
         allProjectsAdapter = new AllProjectsAdapter(AllProjects.this, mProjects);
         mRecyclerView.setAdapter(allProjectsAdapter);
 

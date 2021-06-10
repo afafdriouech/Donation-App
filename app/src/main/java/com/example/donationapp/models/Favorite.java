@@ -10,11 +10,13 @@ public class Favorite implements Serializable {
 
     private String nameAsso;
     private String idDonater;
+    private String idAsso;
     public String key;
-    public Favorite(String nameAsso, String idDonater) {
+    public Favorite(String nameAsso, String idDonater, String idAsso) {
 
         this.nameAsso = nameAsso;
         this.idDonater = idDonater;
+        this.idAsso = idAsso;
 
     }
     public Favorite(){}
@@ -35,6 +37,13 @@ public class Favorite implements Serializable {
         this.idDonater = idDonater;
     }
 
+    public String getIdAsso() {
+        return idAsso;
+    }
+
+    public void setIdAsso(String idAsso) {
+        this.idAsso = idAsso;
+    }
 
     @Exclude
     public String getKey() {

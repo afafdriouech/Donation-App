@@ -40,10 +40,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 
 public class Liste_associations  extends Fragment  implements assoListAdapter.OnItemClickListener, Serializable {
 
-
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     private View AssociationsView;
     private RecyclerView myAssociationsList;
@@ -62,6 +64,8 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getActivity().getApplicationContext());
+
         AssociationsView =  inflater.inflate(R.layout.activity_liste_associations,container,false);
         // get associations list from DB
         fStore = FirebaseFirestore.getInstance();
@@ -113,7 +117,7 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
     public void addFavClick(int position) {
         Association selectedItem = mAssociation.get(position);
         final String assoTitle= selectedItem.getAssoName();
-
+        final String selectedKey = selectedItem.getKey();
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
@@ -123,9 +127,10 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
             //finish();
         }
 
-                //add data in firebase
+        logAnalyticsEvent(selectedKey,assoTitle);
+        //add data in firebase
                 idDonator = fAuth.getCurrentUser().getUid();
-                Favorite favorite = new Favorite( assoTitle, idDonator);
+                Favorite favorite = new Favorite(assoTitle, idDonator, selectedKey);
                 CollectionReference collectionReference = fStore.collection("favorites");
                 collectionReference.add(favorite).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -173,7 +178,12 @@ public class Liste_associations  extends Fragment  implements assoListAdapter.On
             }
         }
     });*/
-
+    public void logAnalyticsEvent(String assoId, String assoName) {
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, assoId);
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, assoName);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+    }
 
 
 

@@ -104,7 +104,7 @@ public class Association_details extends AppCompatActivity implements commentLis
 
                 //add data in firebase
                 idDonator = fAuth.getCurrentUser().getUid();
-                Favorite favorite = new Favorite( assoname, idDonator);
+                Favorite favorite = new Favorite( assoname, idDonator,null);
                 Log.d("TAG", "onSuccess: asso added favorites" + assoname + idDonator);
                 CollectionReference collectionReference = fStore.collection("favorites");
                 collectionReference.add(favorite).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -112,7 +112,6 @@ public class Association_details extends AppCompatActivity implements commentLis
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d("TAG", "onSuccess: asso added favorites" + idDonator);
                         //retrieveProjects(assoID);
-
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

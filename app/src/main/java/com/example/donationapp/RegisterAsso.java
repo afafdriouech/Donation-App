@@ -43,7 +43,6 @@ public class RegisterAsso extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
-
         mAssoName   = findViewById(R.id.editTxtName);
         mEmail      = findViewById(R.id.editTxtEmail);
         mPassword   = findViewById(R.id.editTxtPassword);
