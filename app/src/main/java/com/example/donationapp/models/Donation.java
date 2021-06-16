@@ -1,6 +1,10 @@
 package com.example.donationapp.models;
 
-public class Donation {
+import com.google.firebase.firestore.Exclude;
+
+import java.io.Serializable;
+
+public class Donation implements Serializable {
 
     private String projectId;
     private String donaterId;
@@ -10,6 +14,11 @@ public class Donation {
     private String cardDate;
     private String cardCVC;
     private String cardName;
+    @Exclude
+    public String key;
+
+    public Donation() {
+    }
 
     public Donation(String projectId, String donaterId, String donationAmount,
                     String currency, String cardNumber, String cardDate, String cardCVC, String cardName) {
@@ -85,5 +94,13 @@ public class Donation {
 
     public void setCardName(String cardName) {
         this.cardName = cardName;
+    }
+    @Exclude
+    public String getKey() {
+        return key;
+    }
+    @Exclude
+    public void setKey(String key){
+        this.key = key;
     }
 }

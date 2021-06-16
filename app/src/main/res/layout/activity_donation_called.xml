@@ -7,35 +7,35 @@
     android:background="@color/greenBg"
     android:id="@+id/drawer_layout"
     app:layoutManager="androidx.drawerlayout.widget.LinearLayoutManager"
-    tools:context=".Liste_donateurs">
+    tools:context=".DonationCalled">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <include layout="@layout/main_toolbar"/>
-        <LinearLayout
+    <include layout="@layout/main_toolbar"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="13dp"
-                android:layout_marginBottom="10dp"
-                android:text="Donators List"
-                android:textColor="#25221E"
-                android:textSize="30dp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="46dp"
-                tools:layout_editor_absoluteY="55dp" />
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="10dp"
+            android:text="Donations History"
+            android:textColor="#25221E"
+            android:textSize="30dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="46dp"
+            tools:layout_editor_absoluteY="55dp" />
 
-        </LinearLayout>
+    </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/liste_donateurs"
+            android:id="@+id/donCalled_list"
             />
     </LinearLayout>
     <RelativeLayout

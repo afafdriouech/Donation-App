@@ -3,18 +3,23 @@ package com.example.donationapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 public class Liste_appeldon extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
+    String assoID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_appeldon);
 
         drawerLayout = findViewById(R.id.drawer_layout);
+
+        Intent intent = getIntent();
+        assoID = intent.getStringExtra("assoID");
     }
     public void ClickMenu(View view){
         MenuNavigationActivity.openDrawer(drawerLayout);
@@ -24,7 +29,9 @@ public class Liste_appeldon extends AppCompatActivity {
         MenuNavigationActivity.redirectActivity(this,Associations.class);
     }
     public void ClickProjet(View view){
-        MenuNavigationActivity.redirectActivity(this,ProjectsList.class);
+        Intent intent = new Intent(getApplicationContext(),ProjectsList.class);
+        intent.putExtra("assoID",assoID);
+        startActivity(intent);
     }
 
     public void ClickDonationCall(View view){

@@ -65,6 +65,7 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
             }
         });
 
+
         //get asso id
         Intent intent = getIntent();
         assoID = intent.getStringExtra("assoID");
@@ -99,32 +100,7 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
                     projectsListAdapter.notifyDataSetChanged();
 
 
-                   // projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
-                    //mRecyclerView.setAdapter(projectsListAdapter);
-                    //mProgressCircle.setVisibility(View.INVISIBLE);
-                    //projectsListAdapter.setOnItemClickListener(ProjectsList.this);
 
-/////////////////////////////////////////////
-                    //methode 1 working
-                    // Get the query snapshot from the task result
-                    /*QuerySnapshot querySnapshot = task.getResult();
-                    if (querySnapshot != null) {
-                        // Get the projects list from the query snapshot
-                        mProjects = querySnapshot.toObjects(Projet.class);
-                        projectsListAdapter = new projectsListAdapter(ProjectsList.this, mProjects);
-                        mRecyclerView.setAdapter(projectsListAdapter);
-                        projectsListAdapter.setOnItemClickListener(ProjectsList.this);
-                        //mProgressCircle.setVisibility(View.INVISIBLE);
-                    }*/
-                    /*QuerySnapshot querySnapshot = task.getResult();
-                    if (querySnapshot != null) {
-                        while (querySnapshot.iterator().hasNext()) {
-                            Projet projet = querySnapshot.iterator().next().toObject(Projet.class);
-                            mProjects.add(projet);
-                            String itemId = querySnapshot.iterator().next().getId();
-                            projet.setKey(itemId);
-                        }
-                    }*/
 
                 } else {
                     Log.d("tag", "Error getting documents: ", task.getException());
@@ -152,7 +128,10 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
         MenuNavigationActivity.redirectActivity(this, Liste_appeldon.class);
     }
     public void ClickDonCalled(View view) {
-        MenuNavigationActivity.redirectActivity(this, TestMenuActivity.class);
+
+        Intent intent = new Intent(getApplicationContext(),DonationCalled.class);
+        intent.putExtra("assoID",assoID);
+        startActivity(intent);
     }
     public void ClickDonators(View view){
         MenuNavigationActivity.redirectActivity(this,Liste_donateurs.class);
@@ -174,6 +153,10 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
     @Override
     public void onUpdateClick(int position) {
         Toast.makeText(this, "update at position: " + position, Toast.LENGTH_SHORT).show();
+        Projet selectedItem = mProjects.get(position);
+        Intent intent = new Intent(ProjectsList.this, UpdateProjet.class);
+        intent.putExtra("ProjClass", (Serializable) selectedItem);
+        startActivity(intent);
     }
 
     @Override
@@ -188,6 +171,9 @@ public class ProjectsList extends AppCompatActivity implements projectsListAdapt
                 //projectsListAdapter.notifyDataSetChanged();
                 projectsListAdapter.notifyItemChanged(position);
                 Toast.makeText(ProjectsList.this, "Item deleted", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(),ProjectsList.class);
+                intent.putExtra("assoID",assoID);
+                startActivity(intent);
             }
         });
     }

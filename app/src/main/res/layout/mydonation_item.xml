@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="18dp"
     android:layout_marginRight="12dp"
-    android:layout_marginLeft="12dp">
+    android:layout_marginLeft="12dp"
+    android:padding="25dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -14,20 +15,18 @@
             android:id="@+id/donationAssoViewCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dir idik"
             android:textSize="25dp"/>
         <TextView
             android:id="@+id/donationProjViewCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="qoffa ramadan"
+
             android:textColor="#393836"
             android:textSize="18dp"/>
         <TextView
             android:id="@+id/donationAmountViewCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="400"
             android:textColor="#393836"
             android:textSize="18dp"/>
 

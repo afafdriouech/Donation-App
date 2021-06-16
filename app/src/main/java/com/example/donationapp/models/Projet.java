@@ -34,6 +34,18 @@ public class Projet implements Serializable {
         this.imageUrl = imageUrl;
         this.idAsso = idAsso;
     }
+    public Projet(String titre, String DateLancement, String DureeRealisation, String DateEcheance, String budget, String lieu, String description,String image, String imageUrl,String idAsso) {
+        this.titre = titre;
+        this.DateLancement = DateLancement;
+        this.DureeRealisation = DureeRealisation;
+        this.DateEcheance = DateEcheance;
+        this.budget = budget;
+        this.lieu = lieu;
+        this.description = description;
+        this.image = image;
+        this.imageUrl = imageUrl;
+        this.idAsso = idAsso;
+    }
 
     public Projet(){}
 

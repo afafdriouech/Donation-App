@@ -54,8 +54,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25dp"
-                    android:text="Project details:"
+                    android:textSize="23dp"
+                    android:text="Association details:"
                     android:textColor="#700817"
 
                     android:layout_marginTop="7dp"/>

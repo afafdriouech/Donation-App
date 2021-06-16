@@ -59,7 +59,7 @@ public class MenuNavigationActivity extends AppCompatActivity {
     }
     public void ClickDonCalled(View view){
 
-        redirectActivity(this,TestMenuActivity.class);
+        redirectActivity(this,MyDonations.class);
     }
 
     public void ClickDonators(View view){

@@ -2,7 +2,6 @@ package com.example.donationapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,11 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 
-import com.example.donationapp.models.Donater;
 import com.example.donationapp.models.Donation;
+import com.example.donationapp.models.Projet;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,21 +24,19 @@ import com.google.firebase.storage.FirebaseStorage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Liste_donateurs extends AppCompatActivity {
-
-    DrawerLayout drawerLayout;
-    String assoID;
+public class DonationCalled extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private donaterListeAdapter donaterListeAdapter ;
-    private List<Donater> mDonaters;
+    DrawerLayout drawerLayout;
+    private doncalledAdapter doncalledAdapter ;
+    private List<Donation> mDonations;
     private FirebaseFirestore fStore;
     private FirebaseStorage mStorage;
     private FirebaseAuth fAuth;
+    String assoID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_liste_donateurs);
-
+        setContentView(R.layout.activity_donation_called);
         drawerLayout = findViewById(R.id.drawer_layout);
         //get asso id
         Intent intent = getIntent();
@@ -48,27 +44,28 @@ public class Liste_donateurs extends AppCompatActivity {
         // get donations list from DB
         fStore = FirebaseFirestore.getInstance();
         mStorage = FirebaseStorage.getInstance();
-        mRecyclerView = findViewById(R.id.liste_donateurs);
+        mRecyclerView = findViewById(R.id.donCalled_list);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //mProgressCircle = findViewById(R.id.progress_circle);
-        mDonaters = new ArrayList<>();
-        donaterListeAdapter= new donaterListeAdapter(Liste_donateurs.this, mDonaters);
-        mRecyclerView.setAdapter(donaterListeAdapter);
-        Task<QuerySnapshot> collectionReference=fStore.collection("donaters").
+        mDonations = new ArrayList<>();
+        doncalledAdapter= new doncalledAdapter(DonationCalled.this, mDonations);
+        mRecyclerView.setAdapter(doncalledAdapter);
+        Task<QuerySnapshot> collectionReference=fStore.collection("Donations").
                 get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        Donater d = document.toObject(Donater.class);
-                        mDonaters.add(d);
+                        Donation d = document.toObject(Donation.class);
+                        mDonations.add(d);
                         String itemId = document.getId();
                         d.setKey(itemId);
                         //Log.d("TAG", itemId + " => " + document.getData());
                     }
 
-                   donaterListeAdapter.notifyDataSetChanged();
+
+                    doncalledAdapter.notifyDataSetChanged();
 
 
 
@@ -76,19 +73,12 @@ public class Liste_donateurs extends AppCompatActivity {
                 } else {
                     Log.d("tag", "Error getting documents: ", task.getException());
                 }
-                donaterListeAdapter.notifyDataSetChanged();
+                doncalledAdapter.notifyDataSetChanged();
             }
         });
-
     }
     public void ClickMenu(View view) {
         MenuNavigationActivity.openDrawer(drawerLayout);
-    }
-    public static void closeDrawer(DrawerLayout drawerLayout) {
-        // Fermer le drawer layout
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }
     }
     public void ClickHome(View view){
         Intent intent = new Intent(getApplicationContext(), Associations.class);
@@ -117,6 +107,4 @@ public class Liste_donateurs extends AppCompatActivity {
         //MenuNavigationActivity.logout(this);
         MenuNavigationActivity.logout(this);
     }
-
-
 }

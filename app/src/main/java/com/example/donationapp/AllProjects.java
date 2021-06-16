@@ -91,6 +91,10 @@ public class AllProjects extends AppCompatActivity implements AllProjectsAdapter
     public void ClickMenu(View view) {
         MenuNavigationActivity.openDrawer(drawerLayout);
     }
+
+    public void ClickProjet(View view){
+        MenuNavigationActivity.redirectActivity(this,AllProjects.class);
+    }
     public void ClickAssociations(View view){
         MenuNavigationActivity.redirectActivity(this,Associations.class);
     }

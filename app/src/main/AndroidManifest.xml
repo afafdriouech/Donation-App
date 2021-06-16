@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DonationApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MyDonations"></activity>
+        <activity android:name=".DonationCalled"></activity>
+        <activity android:name=".UpdateProjet" />
+        <activity android:name=".MyDonations" />
         <activity android:name=".Association_details" />
         <activity android:name=".addFavorite" />
         <activity android:name=".ThanksPage" />
